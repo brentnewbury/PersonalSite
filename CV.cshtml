@@ -1,0 +1,94 @@
+﻿@{
+    Page.CanonicalUrl = "CV";   
+}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,600" type="text/css">
+    <link rel="stylesheet" href="@FingerPrintUrl.Create("/css/CV.css")" type="text/css" media="screen" />
+    @HtmlHelper.CreateFaviconLinks()
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex" />
+    <meta name="description" content="Hi, I'm Brent and I'm a software developer.">
+    <meta name="keywords" content="Brent,Newbury,Brent Newbury,Software,Developer,Dev,.NET">
+    <meta name="author" content="Brent Newbury">
+    <meta name="copyright" content="Brent Newbury" />
+    <link rel="me" type="text/html" href="http://plus.google.com/107220486454451718380" />
+    <link rel="me" type="text/html" href="http://twitter.com/brentnewbury" />
+    <link rel="me" type="text/html" href="http://facebook.com/brent.newbury" />
+    <link rel="me" type="text/html" href="http://uk.linkedin.com/in/brentnewbury/" />
+    <title>@PersonalSite.Global.SiteTitle - CV</title>
+    @HtmlHelper.CreateCanonicalLink(@Page.CanonicalUrl)
+    @HtmlHelper.CreateAnalyticsJs()
+</head>
+<body>
+    <div id="Content">
+        <header>
+            <h1>Brent Newbury</h1>
+            <div id="Email">Contact: <a href="mailto:brent@brentnewbury.com">brent@brentnewbury.com</a></div>
+        </header>
+        <main role="main">
+            <section>
+                <h2>Career Objective</h2>
+                <p class="SmallBreak">I enjoy developing n-tier applications and application infrastructure which are either web-based, e.g. Web services, or client applications which communicate over the web or between each other on a local network.</p>
+                <p class="SmallBreak">Designing applications which are easy to use and simple to understand is a software quality I strive to attain in any development project.</p>
+                <p>My career objective is to architect, or be part of a team that architects distributed solutions to solve real-world business problems, simplify tasks, and reduce costs.</p>
+            </section>
+            <section>
+                <h2>Development Skills</h2>
+                <p>I enjoy learning new programming languages, frameworks, and design patterns. I'm experienced with the following:</p>
+                <ul>
+                    <li>C#.NET</li>
+                    <li>SQL</li>
+                    <li>WPF</li>
+                    <li>WCF</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>Microsoft Azure</li>
+                    <li>WebAPI</li>
+                    <li>ASP.NET Razor</li>
+                    <li>Entity Framework</li>
+                    <li>Dotfuscator</li>
+                    <li>InstallShield</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Employment</h2>
+                <span class="Date">Sept 2006 &ndash; Present</span>
+                <h3>Draycir Limited</h3>
+                <p class="Position">Senior Software Developer</p>
+                <p>Development of award winning products; Credit Hound, Credit Guardian, and Spindle Document Capture. Responsibilities included user interface design, software development, build management, source control management, code obfuscation, and making any necessary alterations to installer packages.</p>
+                <span class="Date">Sept 2004 &ndash; Sept 2005</span>
+                <h3>Nottingham Trent University</h3>
+                <p class="Position">Assistant Website Developer &amp; Editor</p>
+                <p>Position included creating web applications from inception to implementation as well as general website maintenance for the Virtual Learning Portal and Royal Statistical Society. Daily duties often included; database design, website design and implementation, and analysing and defining client requirements.</p>
+            </section>
+            <section>
+                <h2>Education</h2>
+                <span class="Date">2002 &ndash; 2006</span>
+                <h3>BSc Honors Degree in Software Engineering</h3>
+                <p>Studied at Nottingham Trent University<br />Result: Second Class</p>
+                <span class="Date">2000 &ndash; 2002</span>
+                <h3>BTEC National Diploma in Computing (Software Development)</h3>
+                <p>Studied at New College Nottingham<br />Result: First Class (Distinction)</p>
+            </section>
+            <section>
+                <h2>Additional Skills</h2>
+                <h3>Team Work</h3>
+                <p>I am highly organised and resourceful when working in a group as a team leader or a team member. I am able to distinguish each team member’s individual talents and areas of expertise to benefit of the group and to enhance their own capabilities. As a team member I’m able to complete tasks quickly and efficiently.</p>
+                <h3>Presentation Skills</h3>
+                <p>I can present working models, ideas, and projects to a large or small group of people. I am able to deliver information in a way which is understandable and engaging to the entire audience, not just the technically minded.</p>
+            </section>
+            <section>
+                <h2>Interests &amp; Achievements</h2>
+                <h3>Instant Messaging Network</h3>
+                <p>As part of my dissertation I developed an instant messaging network which would allow a user to converse with anyone in their contact list without the need to setup special network port forwarding rules. The system was able to scale horizontally by adding additional message routing services to handle greater load.</p>
+                <h3>Keeping Current</h3>
+                <p>I read software development books such as Code Complete and CLR via C#, and watch training videos on PluralSight, to advance and expand my development knowledge.</p>
+                <h3>Running</h3>
+                <p>Running and general fitness has been a passion. I participated in the Bupa Great Manchester 10km Run and achieved a time of 40 minutes, 16 seconds.</p>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

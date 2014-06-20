@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,600" type="text/css">
+    <link rel="stylesheet" href="@FingerPrintUrl.Create("/css/Site.css")" type="text/css" media="screen">
+    @HtmlHelper.CreateFaviconLinks()
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="@PersonalSite.Global.Robots" /> 
+    <meta name="description" content="Hi, I'm Brent and I'm a software developer." />
+    <meta name="keywords" content="Brent,Newbury,Brent Newbury,Software,Developer,Dev,.NET" />
+    <meta name="author" content="Brent Newbury" />
+    <meta name="copyright" content="Brent Newbury" />
+    <link rel="me" type="text/html" href="https://plus.google.com/+BrentNewbury" />
+    <link rel="me" type="text/html" href="https://twitter.com/brentnewbury" />
+    <link rel="me" type="text/html" href="https://www.facebook.com/brent.newbury" />
+    <link rel="me" type="text/html" href="http://uk.linkedin.com/in/brentnewbury/" />
+    <title>@Page.Title</title>
+    @HtmlHelper.CreateCanonicalLink(@Page.CanonicalUrl)
+    @HtmlHelper.CreateAnalyticsJs()
+    <!-- Detect SVG support -->
+    <script type="text/javascript">
+        if (!!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', "svg").createSVGRect) {
+            document.documentElement.className = "svgSupport";
+        }
+    </script>
+</head>
+<body>
+    <div id="Content">
+        <header>
+            <div id="Header">
+                <h1><a href="/">Brent Newbury</a></h1>
+                <nav role="navigation">
+                    <ul id="Navigation">
+                        <li role="menuitem"><a href="/" class="Blue">Home</a></li>
+                        <li role="menuitem"><a href="/About" class="Green">About</a></li>
+                        <li role="menuitem"><a href="/Contact" class="Orange">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main role="main">@RenderBody()
+        </main>
+        <div class="Push"></div>
+    </div>
+    <footer>
+        &copy; Copyright @DateTime.UtcNow.Year@(",") <a href="http://brentnewbury.com">Brent Newbury</a>. <wbr />Hello from Leicester, UK.
+    </footer>
+</body>
+</html>

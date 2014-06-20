@@ -1,0 +1,95 @@
+﻿* { margin: 0;}
+
+html, body
+{
+	font-family: 'Open Sans', 'Segoe UI Light', 'Segoe UI', 'Open Sans', Tahoma, Arial, Verdana, sans-serif;
+    font-weight: 300;
+	color: #464646;
+	text-align: center;
+}
+
+div#Content
+{
+	text-align: left;
+	max-width: 45em;
+	margin: 0 auto;
+    padding: 0 .5em;
+}
+
+section
+{
+    margin: 1.5em 0;
+}
+
+h1, h2, h3
+{
+    font-weight: 300;
+}
+
+h1 
+{
+    font-size: 3em;
+    text-align: center;
+}
+
+h2
+{
+    max-width: 200px;
+}
+
+h3, ul, p
+{
+    margin-left: 190px;
+}
+
+a
+{
+    display: inline-block;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+	color: #1c8bbf;
+    text-decoration: none;
+}
+
+a:hover { color: #33b2ef; }
+
+div#Email
+{
+    text-align: center;
+}
+
+ul
+{
+    padding-left: 1.25em;
+}
+
+p, li
+{
+    margin-bottom: 1em;
+}
+
+li
+{
+    float: left;
+    min-width: 9em;
+    margin-right: 1.5em;
+}
+
+p.SmallBreak
+{
+    margin-bottom: .33em;
+}
+
+p.Position
+{
+    margin-bottom: 0;
+    font-style: italic;
+}
+
+.Date
+{
+    color: #808080;
+    float: left;
+}
