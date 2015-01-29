@@ -28,7 +28,10 @@ public class FingerPrintUrl
 
             DateTime date = File.GetLastWriteTime(physicalPath);
 
-            string result = CdnUrl + url + "?v=" + date.Ticks;
+            string result = url + "?v=" + date.Ticks;
+
+            if (!HttpContext.Current.Request.Url.IsLoopback)
+                result = CdnUrl + result;
 
             HttpRuntime.Cache.Insert(url, result, new CacheDependency(physicalPath));
         }
