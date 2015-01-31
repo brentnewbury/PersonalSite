@@ -132,7 +132,6 @@
     <Content Include="Contact.cshtml" />
     <Content Include="404.cshtml" />
     <Content Include="App_Code\HtmlHelper.cshtml" />
-    <Content Include="CV.cshtml" />
     <Content Include="robots.txt" />
     <Content Include="Sitemap.xml" />
     <Content Include="web.config">
