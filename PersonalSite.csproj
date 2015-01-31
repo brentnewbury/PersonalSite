@@ -107,7 +107,6 @@
     <Content Include="img\favicon-196x196.png" />
     <Content Include="img\favicon-32x32.png" />
     <Content Include="img\favicon-96x96.png" />
-    <Content Include="css\CV.css" />
     <Content Include="img\External.png" />
     <Content Include="favicon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
