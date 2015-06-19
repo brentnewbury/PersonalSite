@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Response.OutputCache(numberOfSeconds: 604800, sliding: true, cacheability: HttpCacheability.ServerAndNoCache);
+    
+}<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
