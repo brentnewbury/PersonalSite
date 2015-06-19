@@ -18,12 +18,6 @@
     <title>@Page.Title</title>
     @HtmlHelper.CreateCanonicalLink(@Page.CanonicalUrl)
     @HtmlHelper.CreateAnalyticsJs()
-    <!-- Detect SVG support -->
-    <script type="text/javascript">
-        if (!!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', "svg").createSVGRect) {
-            document.documentElement.className = "svgSupport";
-        }
-    </script>
 </head>
 <body>
     <div id="Content">

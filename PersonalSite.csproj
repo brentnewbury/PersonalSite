@@ -121,18 +121,19 @@
     <Content Include="browserconfig.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="img\ContactSprite.png" />
+    <Content Include="img\Email.svg" />
     <Content Include="img\favicon-160x160.png" />
     <Content Include="img\favicon-16x16.png" />
     <Content Include="img\favicon-196x196.png" />
     <Content Include="img\favicon-32x32.png" />
     <Content Include="img\favicon-96x96.png" />
-    <Content Include="img\External.png" />
     <Content Include="favicon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="img\GooglePlus.svg" />
     <Content Include="img\HoneyBadger.jpg" />
     <Content Include="img\Leic.jpg" />
+    <Content Include="img\LinkedIn.svg" />
     <Content Include="img\Me.jpg" />
     <Content Include="css\Site.css" />
   </ItemGroup>
@@ -143,6 +144,7 @@
     <Content Include="img\mstile-310x150.png" />
     <Content Include="img\mstile-310x310.png" />
     <Content Include="img\mstile-70x70.png" />
+    <Content Include="img\Twitter.svg" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
