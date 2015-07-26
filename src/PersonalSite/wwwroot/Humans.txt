@@ -1,0 +1,11 @@
+﻿/* TEAM */
+	Owner: Brent Newbury
+	Contact: brent@brentnewbury.com
+	Twitter: @brentnewbury
+	From: Leicester, United Kingdom
+
+/* SITE */
+	Last update: 2014/10/26
+	Language: English
+	Doctype: HTML5
+	IDE: Visual Studio 2013

@@ -1,0 +1,8 @@
+{
+  "AppSettings": {
+    "SiteTitle": "Brent Newbury"
+  },
+  "ApplicationInsights": {
+    "InstrumentationKey": "155888f1-48c5-4afa-9c3b-af6b7006da68"
+  }
+}
