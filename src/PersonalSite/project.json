@@ -12,9 +12,7 @@
     "Microsoft.AspNet.Tooling.Razor": "1.0.0-beta5",
     "Microsoft.Framework.Configuration.Json": "1.0.0-beta5",
     "Microsoft.Framework.Logging": "1.0.0-beta5",
-    "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-beta5",
-    "NWebsec.Mvc": "4.1.1",
-    "NWebsec.Owin": "2.1.1"
+    "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-beta5"
   },
 
   "commands": {
