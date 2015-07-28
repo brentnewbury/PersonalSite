@@ -49,7 +49,7 @@ namespace PersonalSite
             {
                 // Add Error handling middleware which catches all application specific errors and
                 // sends the request to the following path or controller action.
-                app.UseErrorHandler("/Home/Error");
+                app.UseErrorHandler("/Error");
             }
 
             // Add static files to the request pipeline.
