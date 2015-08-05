@@ -22,6 +22,7 @@ namespace PersonalSite
 
             if (env.IsDevelopment())
             {
+                builder.AddApplicationInsightsSettings(developerMode: true);
             }
 
             builder.AddEnvironmentVariables();
@@ -31,6 +32,8 @@ namespace PersonalSite
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddApplicationInsightsTelemetry(Configuration);
+
             services.AddMvc();
         }
 
@@ -38,6 +41,11 @@ namespace PersonalSite
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.MinimumLevel = LogLevel.Information;
+
+            if (env.IsProduction())
+            {
+                app.UseApplicationInsightsRequestTelemetry();
+            }
 
             // Add the following to the request pipeline only in development environment.
             if (env.IsDevelopment())
@@ -50,6 +58,11 @@ namespace PersonalSite
                 // Add Error handling middleware which catches all application specific errors and
                 // sends the request to the following path or controller action.
                 app.UseErrorHandler("/Error");
+            }
+
+            if (env.IsProduction())
+            {
+                app.UseApplicationInsightsExceptionTelemetry();
             }
 
             // Add static files to the request pipeline.

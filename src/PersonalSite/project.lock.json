@@ -3,6 +3,37 @@
   "version": 1,
   "targets": {
     "DNX,Version=v4.5.1": {
+      "Microsoft.ApplicationInsights/1.1.1-beta": {
+        "compile": {
+          "lib/net45/Microsoft.ApplicationInsights.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.ApplicationInsights.dll": {}
+        }
+      },
+      "Microsoft.ApplicationInsights.AspNet/1.0.0-beta6": {
+        "dependencies": {
+          "Microsoft.ApplicationInsights": "1.1.1-beta",
+          "Microsoft.AspNet.Hosting.Abstractions": "1.0.0-beta6",
+          "Microsoft.AspNet.Http.Abstractions": "1.0.0-beta6",
+          "Microsoft.AspNet.Http.Features": "1.0.0-beta6",
+          "Microsoft.AspNet.Mvc": "6.0.0-beta6",
+          "Microsoft.Framework.Configuration": "1.0.0-beta6",
+          "Microsoft.Framework.Logging.Abstractions": "1.0.0-beta6"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.ApplicationInsights.AspNet.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.ApplicationInsights.AspNet.dll": {}
+        }
+      },
       "Microsoft.AspNet.Antiforgery/1.0.0-beta6": {
         "dependencies": {
           "Microsoft.AspNet.DataProtection": "1.0.0-beta6",
@@ -1335,6 +1366,54 @@
       }
     },
     "DNXCore,Version=v5.0": {
+      "Microsoft.ApplicationInsights/1.1.1-beta": {
+        "dependencies": {
+          "System.Collections": "4.0.10-beta-22816",
+          "System.Diagnostics.Debug": "4.0.10-beta-22816",
+          "System.Diagnostics.Tools": "4.0.0-beta-22816",
+          "System.Diagnostics.Tracing": "4.0.20-beta-22816",
+          "System.Globalization": "4.0.10-beta-22816",
+          "System.IO": "4.0.10-beta-22816",
+          "System.IO.Compression": "4.0.0-beta-22816",
+          "System.Linq": "4.0.0-beta-22816",
+          "System.Net.Http": "4.0.0-beta-22816",
+          "System.Reflection": "4.0.10-beta-22816",
+          "System.Reflection.Extensions": "4.0.0-beta-22816",
+          "System.Runtime": "4.0.20-beta-22816",
+          "System.Runtime.Extensions": "4.0.10-beta-22816",
+          "System.Text.Encoding": "4.0.10-beta-22816",
+          "System.Text.Encoding.Extensions": "4.0.10-beta-22816",
+          "System.Text.RegularExpressions": "4.0.10-beta-22816",
+          "System.Threading": "4.0.10-beta-22816",
+          "System.Threading.Tasks": "4.0.10-beta-22816",
+          "System.Xml.XDocument": "4.0.0-beta-22816"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.ApplicationInsights.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.ApplicationInsights.dll": {}
+        }
+      },
+      "Microsoft.ApplicationInsights.AspNet/1.0.0-beta6": {
+        "dependencies": {
+          "Microsoft.ApplicationInsights": "1.1.1-beta",
+          "Microsoft.AspNet.Hosting.Abstractions": "1.0.0-beta6",
+          "Microsoft.AspNet.Http.Abstractions": "1.0.0-beta6",
+          "Microsoft.AspNet.Http.Features": "1.0.0-beta6",
+          "Microsoft.AspNet.Mvc": "6.0.0-beta6",
+          "Microsoft.Framework.Configuration": "1.0.0-beta6",
+          "Microsoft.Framework.Logging.Abstractions": "1.0.0-beta6",
+          "System.Net.NameResolution": "4.0.0-beta-22816",
+          "System.Reflection": "4.0.10-beta-23109"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.ApplicationInsights.AspNet.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.ApplicationInsights.AspNet.dll": {}
+        }
+      },
       "Microsoft.AspNet.Antiforgery/1.0.0-beta6": {
         "dependencies": {
           "Microsoft.AspNet.DataProtection": "1.0.0-beta6",
@@ -2872,6 +2951,19 @@
           "lib/DNXCore50/System.IO.dll": {}
         }
       },
+      "System.IO.Compression/4.0.0-beta-22816": {
+        "dependencies": {
+          "System.IO": "4.0.10-beta-22816",
+          "System.Runtime": "4.0.20-beta-22816",
+          "System.Text.Encoding": "4.0.10-beta-22816"
+        },
+        "compile": {
+          "lib/contract/System.IO.Compression.dll": {}
+        },
+        "runtime": {
+          "lib/aspnetcore50/System.IO.Compression.dll": {}
+        }
+      },
       "System.IO.FileSystem/4.0.0-beta-23109": {
         "dependencies": {
           "System.Collections": "4.0.10-beta-23109",
@@ -2962,6 +3054,34 @@
         },
         "runtime": {
           "lib/DNXCore50/System.Linq.Expressions.dll": {}
+        }
+      },
+      "System.Net.Http/4.0.0-beta-22816": {
+        "dependencies": {
+          "System.IO": "4.0.10-beta-22816",
+          "System.Net.Primitives": "4.0.10-beta-22816",
+          "System.Runtime": "4.0.20-beta-22816",
+          "System.Text.Encoding": "4.0.10-beta-22816",
+          "System.Threading.Tasks": "4.0.10-beta-22816"
+        },
+        "compile": {
+          "lib/contract/System.Net.Http.dll": {}
+        },
+        "runtime": {
+          "lib/aspnetcore50/System.Net.Http.dll": {}
+        }
+      },
+      "System.Net.NameResolution/4.0.0-beta-22816": {
+        "dependencies": {
+          "System.Net.Primitives": "4.0.10-beta-22816",
+          "System.Runtime": "4.0.20-beta-22816",
+          "System.Threading.Tasks": "4.0.10-beta-22816"
+        },
+        "compile": {
+          "lib/contract/System.Net.NameResolution.dll": {}
+        },
+        "runtime": {
+          "lib/aspnetcore50/System.Net.NameResolution.dll": {}
         }
       },
       "System.Net.NetworkInformation/4.0.10-beta-23109": {
@@ -3636,6 +3756,36 @@
     }
   },
   "libraries": {
+    "Microsoft.ApplicationInsights/1.1.1-beta": {
+      "sha512": "aqtQ8KNFMGBFCmU3kkkEM7PlyPFvfh/1uKTxixD+myMzB9EjYeGOf0LvFnpkT1sp3voXfU8MUN+eYets8TutdQ==",
+      "files": [
+        "lib/dnxcore50/Microsoft.ApplicationInsights.dll",
+        "lib/dnxcore50/Microsoft.ApplicationInsights.XML",
+        "lib/net40/Microsoft.ApplicationInsights.dll",
+        "lib/net40/Microsoft.ApplicationInsights.XML",
+        "lib/net45/Microsoft.ApplicationInsights.dll",
+        "lib/net45/Microsoft.ApplicationInsights.XML",
+        "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll",
+        "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.XML",
+        "lib/wp8/Microsoft.ApplicationInsights.dll",
+        "lib/wp8/Microsoft.ApplicationInsights.XML",
+        "Microsoft.ApplicationInsights.1.1.1-beta.nupkg",
+        "Microsoft.ApplicationInsights.1.1.1-beta.nupkg.sha512",
+        "Microsoft.ApplicationInsights.nuspec"
+      ]
+    },
+    "Microsoft.ApplicationInsights.AspNet/1.0.0-beta6": {
+      "sha512": "ph1v3p5piFUZ+5uXAfq3vnVgL4+LNEqEK9HCUOHyQb6yog/tR+Kv6fol4Z0EfQTF6vuRQ0ee8i9aNDZPlgnEtQ==",
+      "files": [
+        "lib/dnx451/Microsoft.ApplicationInsights.AspNet.dll",
+        "lib/dnx451/Microsoft.ApplicationInsights.AspNet.xml",
+        "lib/dnxcore50/Microsoft.ApplicationInsights.AspNet.dll",
+        "lib/dnxcore50/Microsoft.ApplicationInsights.AspNet.xml",
+        "Microsoft.ApplicationInsights.AspNet.1.0.0-beta6.nupkg",
+        "Microsoft.ApplicationInsights.AspNet.1.0.0-beta6.nupkg.sha512",
+        "Microsoft.ApplicationInsights.AspNet.nuspec"
+      ]
+    },
     "Microsoft.AspNet.Antiforgery/1.0.0-beta6": {
       "serviceable": true,
       "sha512": "1L0MAy0A+Lc5zMAyr/tg78Lbk/ZdaRVEqf5F7zkG3oEqzQeMqK0tdYNDQce23egEBFTqw9ZEh5dcODL+I+f5sA==",
@@ -5298,6 +5448,19 @@
         "System.IO.nuspec"
       ]
     },
+    "System.IO.Compression/4.0.0-beta-22816": {
+      "sha512": "XLIvFYkpjuAHSr9H7mjtv6sfv4kkSAWJ+ysVO4/KzCDRjYqs9Fl50PnuDkOfBJBoIf5BrWY+GF+4xj4WFBHb/Q==",
+      "files": [
+        "lib/aspnetcore50/System.IO.Compression.dll",
+        "lib/contract/System.IO.Compression.dll",
+        "lib/net45/_._",
+        "lib/portable-wpa81+wp80+win80+net45+aspnetcore50/System.IO.Compression.dll",
+        "License.rtf",
+        "System.IO.Compression.4.0.0-beta-22816.nupkg",
+        "System.IO.Compression.4.0.0-beta-22816.nupkg.sha512",
+        "System.IO.Compression.nuspec"
+      ]
+    },
     "System.IO.FileSystem/4.0.0-beta-23109": {
       "serviceable": true,
       "sha512": "MtqxjWXfRfQyqxHDc7t10aOqgb+Di9x5JotM/5P13awvm4cToH/njG00XyFTWCTWIo84dUpWmmXjpP9qqP8F7w==",
@@ -5424,6 +5587,32 @@
         "System.Linq.Expressions.4.0.10-beta-23109.nupkg",
         "System.Linq.Expressions.4.0.10-beta-23109.nupkg.sha512",
         "System.Linq.Expressions.nuspec"
+      ]
+    },
+    "System.Net.Http/4.0.0-beta-22816": {
+      "sha512": "zuqm/oV6ouUJSBTKhfjHC5JpzPyQolcJAAZt8Nly9ayetuuGBuDwTQ8YGtx1C4xNOWQOjL0vBVFu6EQT5e3SDA==",
+      "files": [
+        "lib/aspnetcore50/System.Net.Http.dll",
+        "lib/contract/System.Net.Http.dll",
+        "lib/net45/_._",
+        "lib/portable-wpa81+wp80+win80+net45+aspnetcore50/System.Net.Http.dll",
+        "License.rtf",
+        "System.Net.Http.4.0.0-beta-22816.nupkg",
+        "System.Net.Http.4.0.0-beta-22816.nupkg.sha512",
+        "System.Net.Http.nuspec"
+      ]
+    },
+    "System.Net.NameResolution/4.0.0-beta-22816": {
+      "sha512": "rhGWDi4XlvzwnTuekOSVulcTAaoSC+vlhOL+qkuK3TtncnbEI8JQtSpTjaleIDYg15YGo84TM4MiJxxxd9nimw==",
+      "files": [
+        "lib/aspnetcore50/System.Net.NameResolution.dll",
+        "lib/contract/System.Net.NameResolution.dll",
+        "lib/net45/System.Net.NameResolution.dll",
+        "lib/portable-wpa81+wp80+win80+net45+aspnetcore50/System.Net.NameResolution.dll",
+        "License.rtf",
+        "System.Net.NameResolution.4.0.0-beta-22816.nupkg",
+        "System.Net.NameResolution.4.0.0-beta-22816.nupkg.sha512",
+        "System.Net.NameResolution.nuspec"
       ]
     },
     "System.Net.NetworkInformation/4.0.10-beta-23109": {
@@ -6530,7 +6719,8 @@
       "Microsoft.AspNet.Tooling.Razor >= 1.0.0-beta6",
       "Microsoft.Framework.Configuration.Json >= 1.0.0-beta6",
       "Microsoft.Framework.Logging >= 1.0.0-beta6",
-      "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0-beta6"
+      "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0-beta6",
+      "Microsoft.ApplicationInsights.AspNet >= 1.0.0-beta6"
     ],
     "DNX,Version=v4.5.1": [],
     "DNXCore,Version=v5.0": []
