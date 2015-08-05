@@ -1,5 +1,6 @@
-﻿@using Microsoft.ApplicationInsights.Extensibility
-@inject TelemetryConfiguration TelemetryConfiguration
+﻿@inject Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration TelemetryConfiguration
+@inject Microsoft.AspNet.Hosting.IHostingEnvironment HostingEnvironment
+@inject Microsoft.Framework.Runtime.IApplicationEnvironment ApplicationEnvironment
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,3 +65,5 @@
     </footer>
 </body>
 </html>
+<!-- Environment: @HostingEnvironment.EnvironmentName -->
+<!-- Framework: @ApplicationEnvironment.RuntimeFramework -->
