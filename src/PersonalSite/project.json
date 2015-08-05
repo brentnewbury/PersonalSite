@@ -13,7 +13,8 @@
         "Microsoft.Framework.Configuration.Json": "1.0.0-beta6",
         "Microsoft.Framework.Logging": "1.0.0-beta6",
         "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-beta6",
-        "Microsoft.ApplicationInsights.AspNet": "1.0.0-beta6"
+        "Microsoft.ApplicationInsights.AspNet": "1.0.0-beta6",
+        "System.Runtime.Serialization.Primitives": "4.0.10"
     },
 
     "commands": {
