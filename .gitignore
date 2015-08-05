@@ -78,6 +78,9 @@ ipch/
 *.vsp
 *.vspx
 
+# ASP.NET 5
+project.lock.json
+
 # TFS 2012 Local Workspace
 $tf/
 
