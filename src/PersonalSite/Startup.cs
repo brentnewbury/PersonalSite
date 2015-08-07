@@ -64,9 +64,8 @@ namespace PersonalSite
             {
                 app.UseApplicationInsightsExceptionTelemetry();
 
+                app.UseCanonicalDomain(Configuration["AppSettings:Domain"], requireHttps: true);
             }
-
-            app.UseCanonicalDomain(Configuration["AppSettings:Domain"], requireHttps: true);
 
             // Add static files to the request pipeline.
             app.UseStaticFiles();
