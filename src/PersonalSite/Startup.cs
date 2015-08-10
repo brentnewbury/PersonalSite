@@ -5,6 +5,7 @@ using Microsoft.Framework.Configuration;
 using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Logging;
 using Microsoft.Framework.Runtime;
+using PersonalSite.TagHelpers;
 
 namespace PersonalSite
 {
