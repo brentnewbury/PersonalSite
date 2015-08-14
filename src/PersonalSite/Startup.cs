@@ -6,6 +6,7 @@ using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Logging;
 using Microsoft.Framework.Runtime;
 using PersonalSite.TagHelpers;
+using System;
 
 namespace PersonalSite
 {
@@ -64,7 +65,10 @@ namespace PersonalSite
             if (env.IsProduction())
             {
                 app.UseApplicationInsightsExceptionTelemetry();
+            }
 
+            if (env.IsProduction() || env.IsEnvironment("Staging"))
+            {
                 app.UseCanonicalDomain(Configuration["AppSettings:Domain"], requireHttps: true);
             }
 
