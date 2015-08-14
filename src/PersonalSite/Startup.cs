@@ -70,6 +70,8 @@ namespace PersonalSite
             if (env.IsProduction() || env.IsEnvironment("Staging"))
             {
                 app.UseCanonicalDomain(Configuration["AppSettings:Domain"], requireHttps: true);
+
+                app.UseStsHeader(maxAge: TimeSpan.FromDays(365), includeSubDomains: true);
             }
 
             // Add static files to the request pipeline.
