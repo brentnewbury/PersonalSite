@@ -45,7 +45,7 @@ namespace PersonalSite.Middleware
             if (options.Preload)
                 value += "; preload";
 
-            return value.ToString();
+            return value;
         }
     }
 }
