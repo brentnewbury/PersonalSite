@@ -10,13 +10,13 @@ namespace PersonalSite.Middleware
     {
         private const string StsHeaderName = "Strict-Transport-Security";
 
-        private StsHeaderOptions _options;
         private RequestDelegate _next;
+        private string _value;
 
         public StsHeaderMiddleware(RequestDelegate next, StsHeaderOptions options)
         {
             _next = next;
-            _options = options;
+            _value = BuildHeaderValue(options);
         }
 
         public async Task Invoke(HttpContext context)
@@ -32,15 +32,20 @@ namespace PersonalSite.Middleware
             if (headers.ContainsKey(StsHeaderName))
                 return;
 
-            var value = $"max-age: {_options.MaxAge.TotalSeconds}";
+            headers[StsHeaderName] = _value;
+        }
 
-            if (_options.IncludeSubDomains)
+        private static string BuildHeaderValue(StsHeaderOptions options)
+        {
+            var value = $"max-age: {options.MaxAge.TotalSeconds}";
+
+            if (options.IncludeSubDomains)
                 value += "; includeSubDomains";
 
-            if (_options.Preload)
+            if (options.Preload)
                 value += "; preload";
 
-            headers[StsHeaderName] = value;
+            return value.ToString();
         }
     }
 }
