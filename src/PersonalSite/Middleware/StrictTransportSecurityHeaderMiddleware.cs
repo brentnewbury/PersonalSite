@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace PersonalSite.Middleware
 {
-    public class StsHeaderMiddleware
+    public class StrictTransportSecurityHeaderMiddleware
     {
-        private const string StsHeaderName = "Strict-Transport-Security";
+        private const string StrictTransportSecurityHeaderName = "Strict-Transport-Security";
 
         private RequestDelegate _next;
         private string _value;
 
-        public StsHeaderMiddleware(RequestDelegate next, StsHeaderOptions options)
+        public StrictTransportSecurityHeaderMiddleware(RequestDelegate next, StrictTransportSecurityHeaderOptions options)
         {
             _next = next;
             _value = BuildHeaderValue(options);
@@ -22,20 +22,20 @@ namespace PersonalSite.Middleware
         public async Task Invoke(HttpContext context)
         {
             if (context.Request.IsHttps)
-                AddStsHeader(context.Response.Headers);
+                AddStrictTransportSecurityHeader(context.Response.Headers);
 
             await _next.Invoke(context);
         }
 
-        private void AddStsHeader(IHeaderDictionary headers)
+        private void AddStrictTransportSecurityHeader(IHeaderDictionary headers)
         {
-            if (headers.ContainsKey(StsHeaderName))
+            if (headers.ContainsKey(StrictTransportSecurityHeaderName))
                 return;
 
-            headers[StsHeaderName] = _value;
+            headers[StrictTransportSecurityHeaderName] = _value;
         }
 
-        private static string BuildHeaderValue(StsHeaderOptions options)
+        private static string BuildHeaderValue(StrictTransportSecurityHeaderOptions options)
         {
             var value = $"max-age: {options.MaxAge.TotalSeconds}";
 

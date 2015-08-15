@@ -91,7 +91,7 @@ namespace PersonalSite
 
         public static void ConfigureSecurityHeaders(IApplicationBuilder app)
         {
-            app.UseStsHeader(maxAge: TimeSpan.FromDays(365), includeSubDomains: true);
+            app.UseStrictTransportSecurityHeader(maxAge: TimeSpan.FromDays(365), includeSubDomains: true);
 
             app.UseXContentTypeOptionsHeader();
 

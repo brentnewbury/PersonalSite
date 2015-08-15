@@ -12,9 +12,9 @@ namespace Microsoft.AspNet.Builder
         /// <param name="builder"></param>
         /// <param name="options">The options configuring the <c>Strict-Transport-Security</c> header value.</param>
         /// <returns></returns>
-        public static IApplicationBuilder UseStsHeader(this IApplicationBuilder builder, StsHeaderOptions options)
+        public static IApplicationBuilder UseStrictTransportSecurityHeader(this IApplicationBuilder builder, StrictTransportSecurityHeaderOptions options)
         {
-            return builder.Use(next => new StsHeaderMiddleware(next, options).Invoke);
+            return builder.Use(next => new StrictTransportSecurityHeaderMiddleware(next, options).Invoke);
         }
 
         /// <summary>
@@ -25,16 +25,16 @@ namespace Microsoft.AspNet.Builder
         /// <param name="includeSubDomains"><see langword="true"/> to instruct the browser to also redirect requests to subdomains to HTTPS.</param>
         /// <param name="preload"><see langword="true"/> to tell vendors to include the domain on a pre-loaded list of domains to automatically redirect requests to HTTPS.</param>
         /// <returns></returns>
-        public static IApplicationBuilder UseStsHeader(this IApplicationBuilder builder, TimeSpan maxAge, bool includeSubDomains = false, bool preload = false)
+        public static IApplicationBuilder UseStrictTransportSecurityHeader(this IApplicationBuilder builder, TimeSpan maxAge, bool includeSubDomains = false, bool preload = false)
         {
-            var options = new StsHeaderOptions
+            var options = new StrictTransportSecurityHeaderOptions
             {
                 MaxAge = maxAge,
                 IncludeSubDomains = includeSubDomains,
                 Preload = preload
             };
 
-            return builder.Use(next => new StsHeaderMiddleware(next, options).Invoke);
+            return builder.Use(next => new StrictTransportSecurityHeaderMiddleware(next, options).Invoke);
         }
 
         /// <summary>

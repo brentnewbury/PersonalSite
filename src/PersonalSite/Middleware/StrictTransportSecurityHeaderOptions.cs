@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PersonalSite.Middleware
 {
-    public class StsHeaderOptions
+    public class StrictTransportSecurityHeaderOptions
     {
         public TimeSpan MaxAge { get; set; } = TimeSpan.FromDays(30);
 
@@ -13,7 +13,7 @@ namespace PersonalSite.Middleware
 
         public bool Preload { get; set; }
 
-        public StsHeaderOptions()
+        public StrictTransportSecurityHeaderOptions()
         {
         }
     }
