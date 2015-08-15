@@ -46,5 +46,21 @@ namespace Microsoft.AspNet.Builder
         {
             return builder.Use(next => new XContentTypeOptionsHeaderMiddleware(next).Invoke);
         }
+
+        /// <summary>
+        /// Adds a <c>X-Frame-Options</c> header to the response. 
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="option">Determines whether the header value is <c>DENY</c> or <c>SAMEORIGIN</c>.</param>
+        /// <returns></returns>
+        public static IApplicationBuilder UseXFrameOptionsHeader(this IApplicationBuilder builder, XFrameOption option)
+        {
+            var options = new XFrameOptions
+            {
+                Option = option
+            };
+
+            return builder.Use(next => new XFrameOptionsHeaderMiddleware(next, options).Invoke);
+        }
     }
 }

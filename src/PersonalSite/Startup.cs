@@ -74,6 +74,8 @@ namespace PersonalSite
                 app.UseStsHeader(maxAge: TimeSpan.FromDays(365), includeSubDomains: true);
 
                 app.UseXContentTypeOptionsHeader();
+
+                app.UseXFrameOptionsHeader(Middleware.XFrameOption.Deny);
             }
 
             // Add static files to the request pipeline.
