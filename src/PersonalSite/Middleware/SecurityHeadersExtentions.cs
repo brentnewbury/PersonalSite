@@ -91,5 +91,16 @@ namespace Microsoft.AspNet.Builder
 
             return builder.Use(next => new XXSSProtectionHeaderMiddleware(next, options).Invoke);
         }
+
+        /// <summary>
+        /// Adds a <c>Content-Security-Policy</c> header to the response. 
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="options">The options configuring the <c>Content-Security-Policy</c> header value.</param>
+        /// <returns></returns>
+        public static IApplicationBuilder UseContentSecurityPolicyHeader(this IApplicationBuilder builder, ContentSecurityPolicyHeaderOptions options)
+        {
+            return builder.Use(next => new ContentSecurityPolicyHeaderMiddleware(next, options).Invoke);
+        }
     }
 }

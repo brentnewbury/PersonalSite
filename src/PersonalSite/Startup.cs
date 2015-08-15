@@ -5,6 +5,7 @@ using Microsoft.Framework.Configuration;
 using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Logging;
 using Microsoft.Framework.Runtime;
+using PersonalSite.Middleware;
 using PersonalSite.TagHelpers;
 using System;
 
@@ -71,13 +72,7 @@ namespace PersonalSite
             {
                 app.UseCanonicalDomain(Configuration["AppSettings:Domain"], requireHttps: true);
 
-                app.UseStsHeader(maxAge: TimeSpan.FromDays(365), includeSubDomains: true);
-
-                app.UseXContentTypeOptionsHeader();
-
-                app.UseXFrameOptionsHeader(Middleware.XFrameOption.Deny);
-
-                app.UseXXSSProtectionHeader(enabled: true, mode: Middleware.XXSSProtectionMode.Block);
+                ConfigureSecurityHeaders(app);
             }
 
             // Add static files to the request pipeline.
@@ -91,6 +86,53 @@ namespace PersonalSite
                     template: "{action=Index}",
                     defaults: new { controller = "Home" }
                     );
+            });
+        }
+
+        public static void ConfigureSecurityHeaders(IApplicationBuilder app)
+        {
+            app.UseStsHeader(maxAge: TimeSpan.FromDays(365), includeSubDomains: true);
+
+            app.UseXContentTypeOptionsHeader();
+
+            app.UseXFrameOptionsHeader(XFrameOption.Deny);
+
+            app.UseXXSSProtectionHeader(enabled: true, mode: XXSSProtectionMode.Block);
+
+            app.UseContentSecurityPolicyHeader(new ContentSecurityPolicyHeaderOptions
+            {
+                DefaultSources =
+                {
+                    ContentSecurityPolicyHeaderOptions.Self
+                },
+                ImageSources =
+                {
+                    ContentSecurityPolicyHeaderOptions.Self,
+                    ContentSecurityPolicyHeaderOptions.Data,
+                    "https://az797012.vo.msecnd.net/"
+                },
+                ScriptSources =
+                {
+                    ContentSecurityPolicyHeaderOptions.Self,
+                    ContentSecurityPolicyHeaderOptions.UnsafeInline,
+                    ContentSecurityPolicyHeaderOptions.UnsafeEval,
+                    "https://az797012.vo.msecnd.net/",
+                    "https://fonts.googleapis.com/"
+                },
+                StyleSources =
+                {
+                    ContentSecurityPolicyHeaderOptions.Self,
+                    "https://az797012.vo.msecnd.net/",
+                    "https://fonts.googleapis.com/"
+                },
+                FontSources =
+                {
+                    "https://fonts.gstatic.com/"
+                },
+                ConnectSources =
+                {
+                    "https://dc.services.visualstudio.com/"
+                }
             });
         }
     }
