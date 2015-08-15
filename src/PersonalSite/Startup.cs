@@ -72,6 +72,8 @@ namespace PersonalSite
                 app.UseCanonicalDomain(Configuration["AppSettings:Domain"], requireHttps: true);
 
                 app.UseStsHeader(maxAge: TimeSpan.FromDays(365), includeSubDomains: true);
+
+                app.UseXContentTypeOptionsHeader();
             }
 
             // Add static files to the request pipeline.

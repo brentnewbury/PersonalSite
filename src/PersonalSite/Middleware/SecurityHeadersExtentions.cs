@@ -36,5 +36,15 @@ namespace Microsoft.AspNet.Builder
 
             return builder.Use(next => new StsHeaderMiddleware(next, options).Invoke);
         }
+
+        /// <summary>
+        /// Adds a <c>X-Content-Type-Options</c> header with a value of <c>nosniff</c> to the response. 
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <returns></returns>
+        public static IApplicationBuilder UseXContentTypeOptionsHeader(this IApplicationBuilder builder)
+        {
+            return builder.Use(next => new XContentTypeOptionsHeaderMiddleware(next).Invoke);
+        }
     }
 }
