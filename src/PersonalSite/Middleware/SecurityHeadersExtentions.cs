@@ -78,7 +78,8 @@ namespace Microsoft.AspNet.Builder
         /// Adds a <c>X-XSS-Protection</c> header to the response. 
         /// </summary>
         /// <param name="builder"></param>
-        /// <param name="options">Determines whether the header value is <c>DENY</c> or <c>SAMEORIGIN</c>.</param>
+        /// <param name="enabled">Determines whether the header value is <c>1</c> or <c>0</c>.</param>
+        /// <param name="mode">Appends the block mode to the header value, e.g. <c>; mode=deny</c>.</param>
         /// <returns></returns>
         public static IApplicationBuilder UseXXSSProtectionHeader(this IApplicationBuilder builder, bool enabled = true, XXSSProtectionMode mode = XXSSProtectionMode.Block)
         {
