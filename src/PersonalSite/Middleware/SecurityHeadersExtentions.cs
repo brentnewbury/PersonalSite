@@ -62,5 +62,33 @@ namespace Microsoft.AspNet.Builder
 
             return builder.Use(next => new XFrameOptionsHeaderMiddleware(next, options).Invoke);
         }
+
+        /// <summary>
+        /// Adds a <c>X-XSS-Protection</c> header to the response. 
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="options">The options configuring the <c>X-XSS-Protection</c> header value.</param>
+        /// <returns></returns>
+        public static IApplicationBuilder UseXXSSProtectionHeader(this IApplicationBuilder builder, XXSSProtectionHeaderOptions options)
+        {
+            return builder.Use(next => new XXSSProtectionHeaderMiddleware(next, options).Invoke);
+        }
+
+        /// <summary>
+        /// Adds a <c>X-XSS-Protection</c> header to the response. 
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="options">Determines whether the header value is <c>DENY</c> or <c>SAMEORIGIN</c>.</param>
+        /// <returns></returns>
+        public static IApplicationBuilder UseXXSSProtectionHeader(this IApplicationBuilder builder, bool enabled = true, XXSSProtectionMode mode = XXSSProtectionMode.Block)
+        {
+            var options = new XXSSProtectionHeaderOptions
+            {
+                Enabled = enabled,
+                Mode = mode
+            };
+
+            return builder.Use(next => new XXSSProtectionHeaderMiddleware(next, options).Invoke);
+        }
     }
 }

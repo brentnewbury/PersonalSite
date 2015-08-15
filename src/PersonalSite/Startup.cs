@@ -76,6 +76,8 @@ namespace PersonalSite
                 app.UseXContentTypeOptionsHeader();
 
                 app.UseXFrameOptionsHeader(Middleware.XFrameOption.Deny);
+
+                app.UseXXSSProtectionHeader(enabled: true, mode: Middleware.XXSSProtectionMode.Block);
             }
 
             // Add static files to the request pipeline.
