@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNet.Builder;
-using PersonalSite.Middleware;
+﻿using PersonalSite.Middleware;
 using System;
 
 namespace Microsoft.AspNet.Builder

@@ -1,13 +1,10 @@
 ﻿using Microsoft.AspNet.Hosting;
-using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.TagHelpers.Internal;
 using Microsoft.AspNet.Razor.Runtime.TagHelpers;
 using Microsoft.Framework.Caching.Memory;
-using Microsoft.Framework.OptionsModel;
 using System;
 using System.Collections.Generic;
-using System.IO;
 
 namespace PersonalSite.TagHelpers
 {

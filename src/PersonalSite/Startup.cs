@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Diagnostics;
 using Microsoft.AspNet.Hosting;
 using Microsoft.Framework.Configuration;
 using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Logging;
 using Microsoft.Framework.Runtime;
 using PersonalSite.Middleware;
-using PersonalSite.TagHelpers;
 using System;
 
 namespace PersonalSite
