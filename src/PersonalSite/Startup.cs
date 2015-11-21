@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
-using Microsoft.Framework.Configuration;
-using Microsoft.Framework.DependencyInjection;
-using Microsoft.Framework.Logging;
-using Microsoft.Framework.Runtime;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using PersonalSite.Middleware;
 using System;
+using Microsoft.AspNet.Http;
 
 namespace PersonalSite
 {
@@ -13,23 +13,18 @@ namespace PersonalSite
     {
         public IConfiguration Configuration { get; set; }
 
-        public Startup(IHostingEnvironment env, IApplicationEnvironment appEnv)
+        public Startup(IHostingEnvironment env)
         {
-            // Setup configuration sources.
-
-            var builder = new ConfigurationBuilder(appEnv.ApplicationBasePath)
-                .AddJsonFile("config.json")
-                .AddJsonFile($"config.{env.EnvironmentName}.json", optional: true);
-
-            if (env.IsDevelopment())
-            {
-                builder.AddApplicationInsightsSettings(developerMode: true);
-            }
+            // Set up configuration sources.
+            var builder = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
         }
 
+        // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
@@ -38,33 +33,35 @@ namespace PersonalSite
             services.AddMvc();
         }
 
-        // Configure is called after ConfigureServices is called.
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.MinimumLevel = LogLevel.Information;
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddDebug();
 
             if (env.IsProduction())
             {
                 app.UseApplicationInsightsRequestTelemetry();
             }
 
-            // Add the following to the request pipeline only in development environment.
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();
-                app.UseErrorPage();
+                app.UseDeveloperExceptionPage();
             }
             else
-            {
+            { 
                 // Add Error handling middleware which catches all application specific errors and
                 // sends the request to the following path or controller action.
-                app.UseErrorHandler("/Error");
+                app.UseExceptionHandler("/Error");
             }
 
             if (env.IsProduction())
             {
                 app.UseApplicationInsightsExceptionTelemetry();
             }
+
+            app.UseIISPlatformHandler(options => options.AuthenticationDescriptions.Clear());
 
             if (env.IsProduction() || env.IsEnvironment("Staging"))
             {
@@ -73,10 +70,10 @@ namespace PersonalSite
                 ConfigureSecurityHeaders(app);
             }
 
-            // Add static files to the request pipeline.
             app.UseStaticFiles();
 
-            // Add MVC to the request pipeline.
+            // To configure external authentication please see http://go.microsoft.com/fwlink/?LinkID=532715
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -133,5 +130,8 @@ namespace PersonalSite
                 }
             });
         }
+
+        // Entry point for the application.
+        public static void Main(string[] args) => WebApplication.Run<Startup>(args);
     }
 }
