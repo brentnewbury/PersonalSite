@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Mvc;
+using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.AspNet.Mvc.TagHelpers.Internal;
-using Microsoft.AspNet.Razor.Runtime.TagHelpers;
-using Microsoft.Framework.Caching.Memory;
+using Microsoft.AspNet.Mvc.ViewFeatures;
+using Microsoft.AspNet.Razor.TagHelpers;
+using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
 
@@ -11,10 +13,10 @@ namespace PersonalSite.TagHelpers
     /// <summary>
     /// <see cref="ITagHelper"/> implementation targeting &lt;link&gt;, &lt;meta&gt;, &lt;script&gt;, &lt;img&gt; elements that supports replacing paths to instead load from a CDN.
     /// </summary>
-    [TargetElement(LinkTag, Attributes = Attributes)]
-    [TargetElement(MetaTag, Attributes = Attributes)]
-    [TargetElement(ScriptTag, Attributes = Attributes)]
-    [TargetElement(ImgTag, Attributes = Attributes)]
+    [HtmlTargetElement(LinkTag, Attributes = Attributes)]
+    [HtmlTargetElement(MetaTag, Attributes = Attributes)]
+    [HtmlTargetElement(ScriptTag, Attributes = Attributes)]
+    [HtmlTargetElement(ImgTag, Attributes = Attributes)]
     public class CdnTagHelper : TagHelper
     {
         private const string LinkTag = "link";
