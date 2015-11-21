@@ -29,10 +29,10 @@ namespace PersonalSite.Middleware
         {
             var request = context.Request;
 
-            bool isDomainDifferent = !String.Equals(request.Host.Value, _domain, StringComparison.OrdinalIgnoreCase) && !String.IsNullOrEmpty(_domain);
-            bool isSchemeDifferent = !String.Equals(request.Scheme, HttpScheme, StringComparison.OrdinalIgnoreCase) && _requireHttps;
+            bool redirectToCanonicalDomain = !String.Equals(request.Host.Value, _domain, StringComparison.OrdinalIgnoreCase) && !String.IsNullOrEmpty(_domain);
+            bool redirectToHttps = !request.IsHttps && _requireHttps;
 
-            if (isDomainDifferent || isSchemeDifferent)
+            if (redirectToCanonicalDomain || redirectToHttps)
             {
                 var location = CreateRedirectUri(context.Request);
 
