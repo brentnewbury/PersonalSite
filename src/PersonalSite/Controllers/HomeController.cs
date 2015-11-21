@@ -25,5 +25,11 @@ namespace PersonalSite.Controllers
         {
             return View();
         }
+
+        [ActionName("404")]
+        public IActionResult StatusCode404()
+        {
+            return View(viewName: "404");
+        }
     }
 }

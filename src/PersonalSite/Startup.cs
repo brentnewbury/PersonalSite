@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using PersonalSite.Middleware;
 using System;
-using Microsoft.AspNet.Http;
 
 namespace PersonalSite
 {
@@ -68,6 +67,8 @@ namespace PersonalSite
                 app.UseCanonicalDomain(Configuration["AppSettings:Domain"], requireHttps: true);
 
                 ConfigureSecurityHeaders(app);
+
+                app.UseStatusCodePagesWithReExecute("/404", statusCode: 404);
             }
 
             app.UseStaticFiles();
