@@ -112,6 +112,9 @@ namespace PersonalSite.TagHelpers
                 path = _fileVersionProvider.AddFileVersionToPath(path);
             }
 
+            if (path.StartsWith("~/"))
+                path = path.Substring(1);
+
             if (!path.StartsWith("/"))
                 path = "/" + path;
 
