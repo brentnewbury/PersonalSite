@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Http;
-using System;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace PersonalSite.Middleware
