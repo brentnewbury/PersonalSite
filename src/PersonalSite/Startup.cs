@@ -62,6 +62,8 @@ namespace PersonalSite
 
             app.UseIISPlatformHandler(options => options.AuthenticationDescriptions.Clear());
 
+            app.UseRemoveHeader();
+
             if (env.IsProduction() || env.IsEnvironment("Staging"))
             {
                 app.UseCanonicalDomain(Configuration["AppSettings:Domain"], requireHttps: true);
