@@ -18,8 +18,14 @@ namespace PersonalSite
             var builder = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
-
+            
             builder.AddEnvironmentVariables();
+
+            if (env.IsDevelopment())
+            {
+                builder.AddApplicationInsightsSettings(developerMode: true);
+            }
+
             Configuration = builder.Build();
         }
 
