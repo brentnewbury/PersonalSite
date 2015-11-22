@@ -115,6 +115,7 @@ namespace PersonalSite
                     ContentSecurityPolicyHeaderOptions.UnsafeInline,
                     ContentSecurityPolicyHeaderOptions.UnsafeEval,
                     "https://az797012.vo.msecnd.net/",
+                    "https://az416426.vo.msecnd.net/",
                     "https://fonts.googleapis.com/"
                 },
                 StyleSources =
