@@ -1,0 +1,69 @@
+﻿@inject Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration TelemetryConfiguration
+@inject Microsoft.AspNet.Hosting.IHostingEnvironment HostingEnvironment
+@inject Microsoft.Extensions.PlatformAbstractions.IApplicationEnvironment ApplicationEnvironment
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,600" type="text/css" />
+    <link rel="stylesheet" href="~/css/Site.css" type="text/css" media="screen" cdn-uri="//az797012.vo.msecnd.net/" cdn-append-version="true" />
+    <link rel="apple-touch-icon" sizes="57x57" href="~/img/apple-touch-icon-57x57.png" cdn-uri="//az797012.vo.msecnd.net/" cdn-append-version="true" />
+    <link rel="apple-touch-icon" sizes="114x114" href="~/img/apple-touch-icon-114x114.png" cdn-uri="//az797012.vo.msecnd.net/" cdn-append-version="true" />
+    <link rel="apple-touch-icon" sizes="72x72" href="~/img/apple-touch-icon-72x72.png" cdn-uri="//az797012.vo.msecnd.net/" cdn-append-version="true" />
+    <link rel="apple-touch-icon" sizes="144x144" href="~/img/apple-touch-icon-144x144.png"  cdn-uri="//az797012.vo.msecnd.net/" cdn-append-version="true"/>
+    <link rel="apple-touch-icon" sizes="60x60" href="~/img/apple-touch-icon-60x60.png" cdn-uri="//az797012.vo.msecnd.net/" cdn-append-version="true" />
+    <link rel="apple-touch-icon" sizes="120x120" href="~/img/apple-touch-icon-120x120.png" cdn-uri="//az797012.vo.msecnd.net/" cdn-append-version="true" />
+    <link rel="apple-touch-icon" sizes="76x76" href="~/img/apple-touch-icon-76x76.png" cdn-uri="//az797012.vo.msecnd.net/" cdn-append-version="true" />
+    <link rel="apple-touch-icon" sizes="152x152" href="~/img/apple-touch-icon-152x152.png" cdn-uri="//az797012.vo.msecnd.net/" cdn-append-version="true" />
+    <link rel="icon" type="image/png" href="~/img/favicon-196x196.png" sizes="196x196" cdn-uri="//az797012.vo.msecnd.net/" cdn-append-version="true" />
+    <link rel="icon" type="image/png" href="~/img/favicon-160x160.png" sizes="160x160" cdn-uri="//az797012.vo.msecnd.net/" cdn-append-version="true" />
+    <link rel="icon" type="image/png" href="~/img/favicon-96x96.png" sizes="96x96" cdn-uri="//az797012.vo.msecnd.net/" cdn-append-version="true" />
+    <link rel="icon" type="image/png" href="~/img/favicon-16x16.png" sizes="16x16" cdn-uri="//az797012.vo.msecnd.net/" cdn-append-version="true" />
+    <link rel="icon" type="image/png" href="~/img/favicon-32x32.png" sizes="32x32" cdn-uri="//az797012.vo.msecnd.net/" cdn-append-version="true" />
+    <meta name="application-name" content="Brent Newbury's Website" />
+    <meta name="msapplication-config" content="~/browserconfig.xml" cdn-uri="//az797012.vo.msecnd.net/" cdn-append-version="true" />
+    <meta name="msapplication-TileColor" content="#1c8bbf" />
+    <meta name="msapplication-navbutton-color" content="#1c8bbf" />
+    <meta name="msapplication-TileImage" content="~/img/mstile-144x144.png" cdn-uri="//az797012.vo.msecnd.net/" cdn-append-version="true" />
+    <meta name="viewport" content="width=device-width" />
+    <environment names="Production">
+    <meta name="robots" content="index,follow" />
+    </environment>
+    <meta name="description" content="Hi, I'm Brent and I'm a software developer." />
+    <meta name="keywords" content="Brent,Newbury,Brent Newbury,Software,Developer,Dev,.NET" />
+    <meta name="author" content="Brent Newbury" />
+    <meta name="copyright" content="Brent Newbury" />
+    <link rel="me" type="text/html" href="https://plus.google.com/+BrentNewbury" />
+    <link rel="me" type="text/html" href="https://twitter.com/brentnewbury" />
+    <link rel="me" type="text/html" href="https://www.facebook.com/brent.newbury" />
+    <link rel="me" type="text/html" href="http://uk.linkedin.com/in/brentnewbury/" />
+    <title>@ViewData["Title"]</title>
+    <environment names="Production">
+    @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
+    </environment>
+</head>
+<body>
+    <div id="Content">
+        <header>
+            <div id="Header">
+                <h1><a href="/">Brent Newbury</a></h1>
+                <nav role="navigation">
+                    <ul id="Navigation">
+                        <li><a href="/" class="Blue">Home</a></li>
+                        <li><a href="/About" class="Green">About</a></li>
+                        <li><a href="/Contact" class="Orange">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main role="main">@RenderBody()
+        </main>
+        <div class="Push"></div>
+    </div>
+    <footer>
+        &copy; Copyright @DateTime.UtcNow.Year, <a href="/">Brent Newbury</a>. <wbr />Hello from Leicester, UK.
+    </footer>
+</body>
+</html>
+<!-- Environment: @HostingEnvironment.EnvironmentName -->
+<!-- Framework: @ApplicationEnvironment.RuntimeFramework -->
