@@ -22,12 +22,12 @@ namespace PersonalSite.Middleware
         public async Task Invoke(HttpContext context)
         {
             if (context.Request.IsHttps)
-                AddStsHeader(context.Response.Headers);
+                AddContentSecurityPolicyHeader(context.Response.Headers);
 
             await _next.Invoke(context);
         }
 
-        private void AddStsHeader(IHeaderDictionary headers)
+        private void AddContentSecurityPolicyHeader(IHeaderDictionary headers)
         {
             if (headers.ContainsKey(ContentSecurityPolicyHeaderName))
                 return;
