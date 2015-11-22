@@ -70,7 +70,7 @@ namespace PersonalSite
 
             app.UseRemoveServerHeader();
 
-            if (env.IsProduction() || env.IsEnvironment("Staging"))
+            if (env.IsProduction() || env.IsStaging())
             {
                 app.UseCanonicalDomain(Configuration["AppSettings:Domain"], requireHttps: true);
 
