@@ -9,7 +9,7 @@ namespace Microsoft.AspNet.Builder
         /// </summary>
         /// <param name="builder"></param>
         /// <returns></returns>
-        public static IApplicationBuilder UseRemoveHeader(this IApplicationBuilder builder)
+        public static IApplicationBuilder UseRemoveServerHeader(this IApplicationBuilder builder)
         {
             return builder.Use(next => new RemoveServerHeaderMiddleware(next).Invoke);
         }

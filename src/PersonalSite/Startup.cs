@@ -62,7 +62,7 @@ namespace PersonalSite
 
             app.UseIISPlatformHandler(options => options.AuthenticationDescriptions.Clear());
 
-            app.UseRemoveHeader();
+            app.UseRemoveServerHeader();
 
             if (env.IsProduction() || env.IsEnvironment("Staging"))
             {
