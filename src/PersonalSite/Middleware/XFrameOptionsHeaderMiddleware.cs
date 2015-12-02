@@ -6,7 +6,7 @@ namespace PersonalSite.Middleware
 {
     public class XFrameOptionsHeaderMiddleware
     {
-        private const string XFrameOptionsHeaderName = "X-Frame-Options";
+        public const string XFrameOptionsHeaderName = "X-Frame-Options";
 
         private XFrameOptions _options;
         private RequestDelegate _next;
