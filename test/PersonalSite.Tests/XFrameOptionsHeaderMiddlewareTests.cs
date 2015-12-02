@@ -13,19 +13,20 @@ namespace PersonalSite.Tests
         {
             var server = PersonalSiteTestServer.Create(app =>
             {
-                app.UseXFrameOptionsHeader(Middleware.XFrameOption.Deny);
+                app.UseXFrameOptionsHeader(XFrameOption.Deny);
             });
             var response = await server.CreateRequest("http://server/").GetAsync();
 
             Assert.True(response.Headers.Contains(XFrameOptionsHeaderMiddleware.XFrameOptionsHeaderName));
             Assert.Equal("DENY", response.Headers.GetValues(XFrameOptionsHeaderMiddleware.XFrameOptionsHeaderName).First());
         }
+
         [Fact]
         public async Task EmitXFrameOptionsHeaderWithSameOriginValue()
         {
             var server = PersonalSiteTestServer.Create(app =>
             {
-                app.UseXFrameOptionsHeader(Middleware.XFrameOption.SameOrigin);
+                app.UseXFrameOptionsHeader(XFrameOption.SameOrigin);
             });
             var response = await server.CreateRequest("http://server/").GetAsync();
 
