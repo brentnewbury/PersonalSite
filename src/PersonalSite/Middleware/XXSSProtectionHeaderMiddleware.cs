@@ -7,7 +7,7 @@ namespace PersonalSite.Middleware
 {
     public class XXSSProtectionHeaderMiddleware
     {
-        private const string XXSSProtectionHeaderName = "X-XSS-Protection";
+        public const string XXSSProtectionHeaderName = "X-XSS-Protection";
 
         private RequestDelegate _next;
         private string _value;
