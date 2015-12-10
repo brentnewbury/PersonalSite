@@ -35,7 +35,7 @@ namespace PersonalSite.Middleware
 
         private static string BuildHeaderValue(StrictTransportSecurityHeaderOptions options)
         {
-            var value = $"max-age: {options.MaxAge.TotalSeconds}";
+            var value = $"max-age={options.MaxAge.TotalSeconds}";
 
             if (options.IncludeSubDomains)
                 value += "; includeSubDomains";
