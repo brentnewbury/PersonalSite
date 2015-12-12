@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
+using Microsoft.AspNet.Http;
+using Microsoft.AspNet.StaticFiles;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Net.Http.Headers;
 using PersonalSite.Middleware;
 using System;
 
@@ -70,7 +73,17 @@ namespace PersonalSite
 
             app.UseRemoveServerHeader();
 
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                OnPrepareResponse = context =>
+                {
+                    context.Context.Response.GetTypedHeaders().CacheControl = new CacheControlHeaderValue()
+                    {
+                        MaxAge = TimeSpan.FromDays(14),
+                        Public = true
+                    };
+                }
+            });
 
             if (env.IsProduction() || env.IsStaging())
             {
