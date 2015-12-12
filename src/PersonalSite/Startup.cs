@@ -70,6 +70,8 @@ namespace PersonalSite
 
             app.UseRemoveServerHeader();
 
+            app.UseStaticFiles();
+
             if (env.IsProduction() || env.IsStaging())
             {
                 app.UseCanonicalDomain(Configuration["AppSettings:Domain"], requireHttps: true);
@@ -78,8 +80,6 @@ namespace PersonalSite
 
                 app.UseStatusCodePagesWithReExecute("/404", statusCode: 404);
             }
-
-            app.UseStaticFiles();
 
             // To configure external authentication please see http://go.microsoft.com/fwlink/?LinkID=532715
 
