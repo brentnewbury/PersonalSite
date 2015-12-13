@@ -156,7 +156,7 @@ a.Green:hover, h2.Green { color: #25893f !important; }
 img.Right
 {
 	float: right;
-	padding: .4em .4em .3em .6em;
+	padding: .4em .4em .3em 1.6em;
 }
 
 abbr
