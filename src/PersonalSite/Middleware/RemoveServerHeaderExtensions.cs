@@ -1,6 +1,6 @@
-﻿using PersonalSite.Middleware;
+﻿using Microsoft.AspNetCore.Builder;
 
-namespace Microsoft.AspNet.Builder
+namespace PersonalSite.Middleware
 {
     public static class RemoveServerHeaderExtensions
     {

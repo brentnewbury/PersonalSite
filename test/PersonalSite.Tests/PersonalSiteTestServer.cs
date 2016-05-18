@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.TestHost;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.TestHost;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 
 namespace PersonalSite.Tests
 {
@@ -12,12 +11,18 @@ namespace PersonalSite.Tests
     {
         public static TestServer Create(Action<IApplicationBuilder> configureApp)
         {
-            var configurationBuilder = new ConfigurationBuilder();
-            configurationBuilder.AddInMemoryCollection(new[]
-            {
-                new KeyValuePair<string, string>("webroot", ".")
-            });
-            return TestServer.Create(configurationBuilder.Build(), configureApp, configureServices: null);
+            var configuration = new ConfigurationBuilder()
+                .AddInMemoryCollection(new[]
+                {
+                    new KeyValuePair<string, string>("webroot", ".")
+                })
+                .Build();
+
+            var builder = new WebHostBuilder()
+                .UseConfiguration(configuration)
+                .Configure(configureApp);
+
+            return new TestServer(builder);
         }
     }
 }

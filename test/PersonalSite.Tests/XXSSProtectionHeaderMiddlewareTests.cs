@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNet.Builder;
-using PersonalSite.Middleware;
+﻿using PersonalSite.Middleware;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;

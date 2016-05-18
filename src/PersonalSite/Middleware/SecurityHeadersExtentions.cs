@@ -1,7 +1,7 @@
-﻿using PersonalSite.Middleware;
+﻿using Microsoft.AspNetCore.Builder;
 using System;
 
-namespace Microsoft.AspNet.Builder
+namespace PersonalSite.Middleware
 {
     public static class SecurityHeadersExtentions
     {

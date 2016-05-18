@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Diagnostics;
-using Microsoft.AspNet.Http;
-using Microsoft.AspNet.Http.Features;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Http;
 using System.Globalization;
 
 namespace PersonalSite.Middleware
