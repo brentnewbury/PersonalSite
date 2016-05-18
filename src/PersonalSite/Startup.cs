@@ -85,7 +85,7 @@ namespace PersonalSite
 
             if (env.IsProduction() || env.IsStaging())
             {
-                //app.UseCanonicalDomain(Configuration["AppSettings:Domain"], requireHttps: true);
+                app.UseCanonicalDomain(Configuration["AppSettings:Domain"], requireHttps: true);
 
                 ConfigureSecurityHeaders(app);
             }
