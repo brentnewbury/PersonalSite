@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNet.Hosting;
-using Microsoft.AspNet.Mvc;
-using Microsoft.AspNet.Mvc.Rendering;
-using Microsoft.AspNet.Mvc.TagHelpers.Internal;
-using Microsoft.AspNet.Mvc.ViewFeatures;
-using Microsoft.AspNet.Razor.TagHelpers;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Razor.TagHelpers;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.AspNetCore.Mvc.TagHelpers.Internal;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
+using System.Text.Encodings.Web;
 
 namespace PersonalSite.TagHelpers
 {
@@ -17,7 +20,7 @@ namespace PersonalSite.TagHelpers
     [HtmlTargetElement(MetaTag, Attributes = Attributes)]
     [HtmlTargetElement(ScriptTag, Attributes = Attributes)]
     [HtmlTargetElement(ImgTag, Attributes = Attributes)]
-    public class CdnTagHelper : TagHelper
+    public class CdnTagHelper : UrlResolutionTagHelper
     {
         private const string LinkTag = "link";
         private const string MetaTag = "meta";
@@ -57,17 +60,15 @@ namespace PersonalSite.TagHelpers
         [HtmlAttributeName(AppendVersionAttribute)]
         public bool AppendVersion { get; set; }
 
-        [HtmlAttributeNotBound] 
-        [ViewContext] 
-        public ViewContext ViewContext { get; set; }
-
         /// <summary>
         /// Creates a new <see cref="CdnTagHelper"/>.
         /// </summary>
-        /// <param name="hostingEnvironment">The <see cref="IHostingEnvironment"/>.</param>
+        /// <param name="env">The <see cref="IHostingEnvironment"/>.</param>
         /// <param name="cache">The <see cref="IMemoryCache"/>.</param>
-        /// <param name="urlHelper">The <see cref="IUrlHelper"/>.</param>
-        public CdnTagHelper(IHostingEnvironment env, IMemoryCache cache, IUrlHelper _urlHelper)
+        /// <param name="urlHelperFactory">The <see cref="IUrlHelperFactory"/>.</param>
+        /// <param name="htmlEncoder">The <see cref="HtmlEncoder"/>.</param>
+        public CdnTagHelper(IHostingEnvironment env, IMemoryCache cache, IUrlHelperFactory urlHelperFactory, HtmlEncoder htmlEncoder)
+            : base(urlHelperFactory, htmlEncoder)
         {
             _env = env;
             _cache = cache;
@@ -92,7 +93,9 @@ namespace PersonalSite.TagHelpers
             if (!output.Attributes.ContainsName(pathAttributeName))
                 return;
 
-            var path = output.Attributes[pathAttributeName]?.Value.ToString();
+            ProcessUrlAttribute(pathAttributeName, output);
+
+            var path = output.Attributes[pathAttributeName].Value?.ToString();
             if (String.IsNullOrWhiteSpace(path))
                 return;
 
@@ -120,7 +123,7 @@ namespace PersonalSite.TagHelpers
 
             var cdnPath = cdnUri + path;
 
-            output.Attributes[pathAttributeName].Value = cdnPath;
+            output.Attributes.SetAttribute(pathAttributeName, cdnPath);
         }
 
         private void EnsureFileVersionProvider()
