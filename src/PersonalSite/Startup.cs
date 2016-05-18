@@ -35,6 +35,12 @@ namespace PersonalSite
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            // Temporary fix for Azure to allow the app to determine the request scheme properly
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto;
+            });
+
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddMvc();
@@ -69,8 +75,6 @@ namespace PersonalSite
             {
                 app.UseApplicationInsightsExceptionTelemetry();
             }
-
-            //app.UseIISPlatformHandler(options => options.AuthenticationDescriptions.Clear());
 
             app.UseRemoveServerHeader();
 
