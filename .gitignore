@@ -10,6 +10,9 @@
 *.user
 *.sln.docstates
 
+# Visual Studio .vs directory
+/.vs
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
