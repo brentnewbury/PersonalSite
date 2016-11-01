@@ -51,13 +51,13 @@ namespace PersonalSite
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
-
-            if (env.IsProduction())
+            if (env.IsDevelopment())
             {
-                app.UseApplicationInsightsRequestTelemetry();
+                loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+                loggerFactory.AddDebug();
             }
+
+            app.UseApplicationInsightsRequestTelemetry();
 
             if (env.IsDevelopment())
             {
@@ -71,10 +71,7 @@ namespace PersonalSite
                 app.UseExceptionHandler("/Error");
             }
 
-            if (env.IsProduction())
-            {
-                app.UseApplicationInsightsExceptionTelemetry();
-            }
+            app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseRemoveServerHeader();
 
