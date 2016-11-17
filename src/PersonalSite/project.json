@@ -37,7 +37,7 @@
     "Microsoft.Extensions.Logging.Debug": "1.1.0",
     "Microsoft.AspNetCore.Razor.Tools": {
       "version": "1.1.0-preview4-final",
-       "type": "build"
+      "type": "build"
     },
     "Microsoft.AspNetCore.Mvc.Razor.ViewCompilation.Design": {
       "version": "1.1.0-preview4-final",
@@ -47,6 +47,7 @@
 
   "tools": {
     "Microsoft.AspNetCore.Razor.Tools": "1.1.0-preview4-final",
+    "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.1.0-preview4-final",
     "Microsoft.AspNetCore.Mvc.Razor.ViewCompilation.Tools": "1.1.0-preview4-final"
   },
 
