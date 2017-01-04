@@ -10,6 +10,7 @@ namespace PersonalSite
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseApplicationInsights()
                 .UseAzureAppServices()
                 .UseStartup<Startup>()
                 .Build();

@@ -23,11 +23,6 @@ namespace PersonalSite
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
 
-            if (env.IsDevelopment())
-            {
-                builder.AddApplicationInsightsSettings(developerMode: true);
-            }
-
             Configuration = builder.Build();
         }
 
@@ -40,8 +35,6 @@ namespace PersonalSite
             {
                 options.ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto;
             });
-
-            services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddMvc();
 
@@ -57,8 +50,6 @@ namespace PersonalSite
                 loggerFactory.AddDebug();
             }
 
-            app.UseApplicationInsightsRequestTelemetry();
-
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();
@@ -70,8 +61,6 @@ namespace PersonalSite
                 // sends the request to the following path or controller action.
                 app.UseExceptionHandler("/Error");
             }
-
-            app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseRemoveServerHeader();
 
@@ -89,7 +78,7 @@ namespace PersonalSite
 
             if (env.IsProduction() || env.IsStaging())
             {
-                app.UseCanonicalDomain(Configuration["AppSettings:Domain"], requireHttps: true);
+                //app.UseCanonicalDomain(Configuration["AppSettings:Domain"], requireHttps: true);
 
                 ConfigureSecurityHeaders(app);
             }
