@@ -152,6 +152,10 @@ namespace PersonalSite
                 ConnectSources =
                 {
                     "https://dc.services.visualstudio.com/"
+                },
+                FrameAncestors =
+                {
+                    ContentSecurityPolicyHeaderOptions.None
                 }
             });
         }

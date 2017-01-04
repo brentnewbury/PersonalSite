@@ -18,6 +18,7 @@ namespace PersonalSite.Middleware
         public List<string> FontSources { get; } = new List<string>();
         public List<string> ConnectSources { get; } = new List<string>();
         public List<string> FrameSources { get; } = new List<string>();
+        public List<string> FrameAncestors { get; } = new List<string>();
 
         public ContentSecurityPolicyHeaderOptions()
         {

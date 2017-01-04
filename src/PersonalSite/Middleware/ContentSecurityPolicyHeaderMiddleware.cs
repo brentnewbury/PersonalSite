@@ -56,6 +56,9 @@ namespace PersonalSite.Middleware
             if (options.ConnectSources.Count > 0)
                 policies.Add($"connect-src {String.Join(" ", options.ConnectSources)};");
 
+            if (options.FrameAncestors.Count > 0)
+                policies.Add($"frame-ancestors {String.Join(" ", options.FrameAncestors)};");
+
             if (options.FrameSources.Count > 0)
                 policies.Add($"frame-src {String.Join(" ", options.FrameSources)}");
 
