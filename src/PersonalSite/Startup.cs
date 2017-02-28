@@ -139,7 +139,8 @@ namespace PersonalSite
                 FrameAncestors =
                 {
                     ContentSecurityPolicyHeaderOptions.None
-                }
+                },
+                UpgradeInsecureRequests = true
             });
         }
     }

@@ -20,6 +20,8 @@ namespace PersonalSite.Middleware
         public List<string> FrameSources { get; } = new List<string>();
         public List<string> FrameAncestors { get; } = new List<string>();
 
+        public bool UpgradeInsecureRequests { get; set; }
+
         public ContentSecurityPolicyHeaderOptions()
         {
         }

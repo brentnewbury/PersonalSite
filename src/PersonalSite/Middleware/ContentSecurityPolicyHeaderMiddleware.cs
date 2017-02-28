@@ -62,6 +62,9 @@ namespace PersonalSite.Middleware
             if (options.FrameSources.Count > 0)
                 policies.Add($"frame-src {String.Join(" ", options.FrameSources)}");
 
+            if (options.UpgradeInsecureRequests)
+                policies.Add("upgrade-insecure-requests;");
+
             return String.Join(" ", policies);
         }
     }
