@@ -111,21 +111,21 @@ namespace PersonalSite
                 {
                     ContentSecurityPolicyHeaderOptions.Self,
                     ContentSecurityPolicyHeaderOptions.Data,
-                    "https://brentnewbury-cdn.azureedge.net/"
+                    "https://cdn.brentnewbury.com/"
                 },
                 ScriptSources =
                 {
                     ContentSecurityPolicyHeaderOptions.Self,
                     ContentSecurityPolicyHeaderOptions.UnsafeInline,
                     ContentSecurityPolicyHeaderOptions.UnsafeEval,
-                    "https://brentnewbury-cdn.azureedge.net/",
+                    "https://cdn.brentnewbury.com/",
                     "https://az416426.vo.msecnd.net/",
                     "https://fonts.googleapis.com/"
                 },
                 StyleSources =
                 {
                     ContentSecurityPolicyHeaderOptions.Self,
-                    "https://brentnewbury-cdn.azureedge.net/",
+                    "https://cdn.brentnewbury.com/",
                     "https://fonts.googleapis.com/"
                 },
                 FontSources =
