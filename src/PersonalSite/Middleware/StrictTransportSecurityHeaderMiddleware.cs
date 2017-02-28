@@ -5,7 +5,7 @@ namespace PersonalSite.Middleware
 {
     public class StrictTransportSecurityHeaderMiddleware
     {
-        private const string StrictTransportSecurityHeaderName = "Strict-Transport-Security";
+        public const string StrictTransportSecurityHeaderName = "Strict-Transport-Security";
 
         private RequestDelegate _next;
         private string _value;
