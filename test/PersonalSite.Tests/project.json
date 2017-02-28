@@ -16,8 +16,9 @@
     "PersonalSite": "1.0.0-*",
     "Microsoft.AspNetCore.Http.Abstractions": "1.1.0",
     "Microsoft.AspNetCore.TestHost": "1.1.0",
+    "Microsoft.DotNet.InternalAbstractions": "1.0.0",
     "Microsoft.Extensions.Configuration": "1.1.0",
-    "xunit": "2.2.0-beta4-build3444",
+    "xunit": "2.2.0",
     "Microsoft.AspNetCore.Hosting": "1.1.0"
   },
 
