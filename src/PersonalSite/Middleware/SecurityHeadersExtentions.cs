@@ -101,5 +101,33 @@ namespace PersonalSite.Middleware
         {
             return builder.Use(next => new ContentSecurityPolicyHeaderMiddleware(next, options).Invoke);
         }
+
+
+        /// <summary>
+        /// Adds a <c>Referrer-Policy</c> header to the response. 
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="policy">The <c>Refer-Policy</c> header value.</param>
+        /// <returns></returns>
+        public static IApplicationBuilder UseReferrerPolicyHeader(this IApplicationBuilder builder, ReferrerPolicy policy)
+        {
+            var options = new ReferrerPolicyHeaderOptions
+            {
+                Policy = policy
+            };
+
+            return builder.Use(next => new ReferrerPolicyHeaderMiddleware(next, options).Invoke);
+        }
+
+        /// <summary>
+        /// Adds a <c>Referrer-Policy</c> header to the response. 
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="options">The options configuring the <c>Referrer-Policy</c> header value.</param>
+        /// <returns></returns>
+        public static IApplicationBuilder UseReferrerPolicyHeader(this IApplicationBuilder builder, ReferrerPolicyHeaderOptions options)
+        {
+            return builder.Use(next => new ReferrerPolicyHeaderMiddleware(next, options).Invoke);
+        }
     }
 }
