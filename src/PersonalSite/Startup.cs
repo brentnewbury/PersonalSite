@@ -101,6 +101,8 @@ namespace PersonalSite
 
             app.UseXXSSProtectionHeader(enabled: true, mode: XXSSProtectionMode.Block);
 
+            app.UseReferrerPolicyHeader(ReferrerPolicy.StrictOriginWhenCrossOrigin);
+
             app.UseContentSecurityPolicyHeader(new ContentSecurityPolicyHeaderOptions
             {
                 DefaultSources =
