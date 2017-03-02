@@ -1,8 +1,8 @@
 language: csharp
-solution: PersonalSite.sln
-install:
-  - nuget restore PersonalSite.sln
-  - nuget install xunit.runners -Version 2.2.0 -OutputDirectory testrunner
-script:
-  - xbuild /p:Configuration=Release PersonalSite.sln
-  - mono ./testrunner/xunit.runners.2.2.0/tools/xunit.console.clr4.exe ./tests/PersonalSite.Tests/bin/Release/netcoreapp1.1/PersonalSite.Tests.dll
+sudo: required
+dist: trusty
+osx_image: xcode7.1
+before_install:  
+  - if test "$TRAVIS_OS_NAME" == "osx"; then brew update; brew install openssl; ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/; ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/; fi
+mono:  
+  - 4.6.0
