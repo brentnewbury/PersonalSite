@@ -19,22 +19,20 @@ namespace PersonalSite.Middleware
         private const string LocationHeaderName = "Location";
 
         private RequestDelegate _next;
-        private string _domain;
-        private bool _requireHttps;
+        private CanonicalDomainOptions _options;
 
-        public CanonicalDomainMiddleware(RequestDelegate next, string domain = null, bool requireHttps = false)
+        public CanonicalDomainMiddleware(RequestDelegate next, CanonicalDomainOptions options)
         {
             _next = next;
-            _domain = domain;
-            _requireHttps = requireHttps;
+            _options = options;
         }
 
         public async Task Invoke(HttpContext context)
         {
             var request = context.Request;
 
-            bool redirectToCanonicalDomain = !String.Equals(request.Host.Value, _domain, StringComparison.OrdinalIgnoreCase) && !String.IsNullOrEmpty(_domain);
-            bool redirectToHttps = !request.IsHttps && _requireHttps;
+            bool redirectToCanonicalDomain = !String.Equals(request.Host.Value, _options.Domain, StringComparison.OrdinalIgnoreCase) && !String.IsNullOrEmpty(_options.Domain);
+            bool redirectToHttps = !request.IsHttps && _options.RequireHttps;
 
             if (redirectToCanonicalDomain || redirectToHttps)
             {
@@ -50,8 +48,8 @@ namespace PersonalSite.Middleware
 
         private string CreateRedirectUri(HttpRequest request)
         {
-            var scheme = (_requireHttps) ? HttpScheme: request.Scheme;
-            var domain = (!String.IsNullOrEmpty(_domain)) ? _domain : request.Host.Value;
+            var scheme = (_options.RequireHttps) ? HttpScheme: request.Scheme;
+            var domain = (!String.IsNullOrEmpty(_options.Domain)) ? _options.Domain : request.Host.Value;
             var path = request.Path.ToUriComponent();
             var query = request.QueryString.ToUriComponent();
 
