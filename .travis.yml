@@ -1,0 +1,8 @@
+language: csharp
+solution: PersonalSite.sln
+install:
+  - nuget restore PersonalSite.sln
+  - nuget install xunit.runners -Version 2.2.0 -OutputDirectory testrunner
+script:
+  - xbuild /p:Configuration=Release PersonalSite.sln
+  - mono ./testrunner/xunit.runners.2.2.0/tools/xunit.console.clr4.exe ./tests/PersonalSite.Tests/bin/Release/netcoreapp1.1/PersonalSite.Tests.dll
