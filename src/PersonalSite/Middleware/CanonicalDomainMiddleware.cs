@@ -31,8 +31,8 @@ namespace PersonalSite.Middleware
         {
             var request = context.Request;
 
-            bool redirectToCanonicalDomain = !String.Equals(request.Host.Value, _options.Domain, StringComparison.OrdinalIgnoreCase) && !String.IsNullOrEmpty(_options.Domain);
-            bool redirectToHttps = !request.IsHttps && _options.RequireHttps;
+            var redirectToCanonicalDomain = !String.Equals(request.Host.Value, _options.Domain, StringComparison.OrdinalIgnoreCase) && !String.IsNullOrEmpty(_options.Domain);
+            var redirectToHttps = !request.IsHttps && _options.RequireHttps;
 
             if (redirectToCanonicalDomain || redirectToHttps)
             {

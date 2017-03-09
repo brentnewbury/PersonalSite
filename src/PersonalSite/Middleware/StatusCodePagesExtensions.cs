@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
+using System;
 using System.Globalization;
 
 namespace PersonalSite.Middleware
@@ -22,7 +23,7 @@ namespace PersonalSite.Middleware
                 if (context.HttpContext.Response.StatusCode != statusCode)
                     return;
 
-                var newPath = new PathString(string.Format(CultureInfo.InvariantCulture, pathFormat, context.HttpContext.Response.StatusCode));
+                var newPath = new PathString(String.Format(CultureInfo.InvariantCulture, pathFormat, context.HttpContext.Response.StatusCode));
 
                 var originalPath = context.HttpContext.Request.Path;
                 // Store the original paths so the app can check it.

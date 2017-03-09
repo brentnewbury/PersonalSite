@@ -1,5 +1,4 @@
-﻿
-namespace PersonalSite.Middleware
+﻿namespace PersonalSite.Middleware
 {
     public class XXSSProtectionHeaderOptions
     {

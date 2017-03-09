@@ -36,7 +36,7 @@ namespace PersonalSite.Middleware
 
         private static string BuildHeaderValue(ContentSecurityPolicyHeaderOptions options)
         {
-            List<string> policies = new List<string>();
+            var policies = new List<string>();
 
             if (options.DefaultSources.Count > 0)
                 policies.Add($"default-src {String.Join(" ", options.DefaultSources)};");
