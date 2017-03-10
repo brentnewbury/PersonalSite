@@ -13,7 +13,7 @@ namespace PersonalSite
 {
     public class Startup
     {
-        public IConfiguration Configuration { get; set; }
+        public IConfiguration Configuration { get; }
 
         public Startup(IHostingEnvironment env)
         {
