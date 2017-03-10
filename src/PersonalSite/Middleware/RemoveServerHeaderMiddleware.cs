@@ -7,7 +7,7 @@ namespace PersonalSite.Middleware
     {
         private const string ServerHeaderName = "Server";
 
-        private RequestDelegate _next;
+        private readonly RequestDelegate _next;
 
         public RemoveServerHeaderMiddleware(RequestDelegate next)
         {

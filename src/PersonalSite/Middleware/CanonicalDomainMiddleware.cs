@@ -18,8 +18,8 @@ namespace PersonalSite.Middleware
         private const string SchemeSeparator = "://";
         private const string LocationHeaderName = "Location";
 
-        private RequestDelegate _next;
-        private CanonicalDomainOptions _options;
+        private readonly RequestDelegate _next;
+        private readonly CanonicalDomainOptions _options;
 
         public CanonicalDomainMiddleware(RequestDelegate next, CanonicalDomainOptions options)
         {

@@ -2,6 +2,9 @@
 
 namespace PersonalSite.Middleware
 {
+    /// <summary>
+    /// Extension methods for adding the <see cref="CanonicalDomainMiddleware"/> into the request pipeline.
+    /// </summary>
     public static class CanonicalDomainExtensions
     {
         /// <summary>

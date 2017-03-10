@@ -7,7 +7,7 @@ namespace PersonalSite.Middleware
     {
         public const string XContentTypeOptionsHeaderName = "X-Content-Type-Options";
         
-        private RequestDelegate _next;
+        private readonly RequestDelegate _next;
 
         public XContentTypeOptionsHeaderMiddleware(RequestDelegate next)
         {

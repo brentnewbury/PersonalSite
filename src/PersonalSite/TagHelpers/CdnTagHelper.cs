@@ -39,8 +39,8 @@ namespace PersonalSite.TagHelpers
             [ImgTag] = SrcAttribute
         };
 
-        private IHostingEnvironment _env;
-        private IMemoryCache _cache;
+        private readonly IHostingEnvironment _env;
+        private readonly IMemoryCache _cache;
         private FileVersionProvider _fileVersionProvider;
 
         /// <summary>

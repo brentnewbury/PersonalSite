@@ -9,8 +9,8 @@ namespace PersonalSite.Middleware
     {
         private const string ContentSecurityPolicyHeaderName = "Content-Security-Policy";
 
-        private RequestDelegate _next;
-        private string _value;
+        private readonly RequestDelegate _next;
+        private readonly string _value;
 
         public ContentSecurityPolicyHeaderMiddleware(RequestDelegate next, ContentSecurityPolicyHeaderOptions options)
         {
