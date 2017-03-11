@@ -1,4 +1,6 @@
-﻿namespace PersonalSite.Middleware
+﻿using System;
+
+namespace PersonalSite.Middleware
 {
     /// <summary>
     /// Options for the <c>X-Frame-Options</c> header.
@@ -51,6 +53,16 @@
         private XFrameOption(string value)
         {
             Value = value;
+        }
+
+        /// <summary>
+        /// Creates an <c>ALLOW-FROM</c> value with the specified <paramref name="uri"/>.
+        /// </summary>
+        /// <param name="uri">The <see cref="Uri"/> to allow frames.</param>
+        /// <returns>An <see cref="XFrameOption"/> instance.</returns>
+        public static XFrameOption CreateAllowFrom(Uri uri)
+        {
+            return new XFrameOption($"ALLOW-FROM {uri}");
         }
     }
 }
