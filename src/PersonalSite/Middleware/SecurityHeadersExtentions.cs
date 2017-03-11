@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using System;
+using Microsoft.Extensions.Options;
 
 namespace PersonalSite.Middleware
 {
@@ -16,7 +17,7 @@ namespace PersonalSite.Middleware
         /// <returns></returns>
         public static IApplicationBuilder UseStrictTransportSecurityHeader(this IApplicationBuilder builder, StrictTransportSecurityHeaderOptions options)
         {
-            return builder.UseMiddleware<StrictTransportSecurityHeaderMiddleware>(options);
+            return builder.UseMiddleware<StrictTransportSecurityHeaderMiddleware>(Options.Create(options));
         }
 
         /// <summary>
@@ -36,7 +37,7 @@ namespace PersonalSite.Middleware
                 Preload = preload
             };
 
-            return builder.UseMiddleware<StrictTransportSecurityHeaderMiddleware>(options);
+            return builder.UseMiddleware<StrictTransportSecurityHeaderMiddleware>(Options.Create(options));
         }
 
         /// <summary>
@@ -62,7 +63,7 @@ namespace PersonalSite.Middleware
                 Option = option
             };
 
-            return builder.UseMiddleware<XFrameOptionsHeaderMiddleware>(options);
+            return builder.UseMiddleware<XFrameOptionsHeaderMiddleware>(Options.Create(options));
         }
 
         /// <summary>
@@ -73,7 +74,7 @@ namespace PersonalSite.Middleware
         /// <returns></returns>
         public static IApplicationBuilder UseXXSSProtectionHeader(this IApplicationBuilder builder, XXSSProtectionHeaderOptions options)
         {
-            return builder.UseMiddleware<XXSSProtectionHeaderMiddleware>(options);
+            return builder.UseMiddleware<XXSSProtectionHeaderMiddleware>(Options.Create(options));
         }
 
         /// <summary>
@@ -91,7 +92,7 @@ namespace PersonalSite.Middleware
                 Mode = mode
             };
 
-            return builder.UseMiddleware<XXSSProtectionHeaderMiddleware>(options);
+            return builder.UseMiddleware<XXSSProtectionHeaderMiddleware>(Options.Create(options));
         }
 
         /// <summary>
@@ -102,7 +103,7 @@ namespace PersonalSite.Middleware
         /// <returns></returns>
         public static IApplicationBuilder UseContentSecurityPolicyHeader(this IApplicationBuilder builder, ContentSecurityPolicyHeaderOptions options)
         {
-            return builder.UseMiddleware<ContentSecurityPolicyHeaderMiddleware>(options);
+            return builder.UseMiddleware<ContentSecurityPolicyHeaderMiddleware>(Options.Create(options));
         }
 
 
@@ -119,7 +120,7 @@ namespace PersonalSite.Middleware
                 Policy = policy
             };
 
-            return builder.UseMiddleware<ReferrerPolicyHeaderMiddleware>(options);
+            return builder.UseMiddleware<ReferrerPolicyHeaderMiddleware>(Options.Create(options));
         }
 
         /// <summary>
@@ -130,7 +131,7 @@ namespace PersonalSite.Middleware
         /// <returns></returns>
         public static IApplicationBuilder UseReferrerPolicyHeader(this IApplicationBuilder builder, ReferrerPolicyHeaderOptions options)
         {
-            return builder.UseMiddleware<ReferrerPolicyHeaderMiddleware>(options);
+            return builder.UseMiddleware<ReferrerPolicyHeaderMiddleware>(Options.Create(options));
         }
     }
 }

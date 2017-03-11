@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 
 namespace PersonalSite.Middleware
 {
@@ -20,10 +21,10 @@ namespace PersonalSite.Middleware
         /// </summary>
         /// <param name="next">The next middleware in the request pipeline.</param>
         /// <param name="options">The configuration for this middleware.</param>
-        public ContentSecurityPolicyHeaderMiddleware(RequestDelegate next, ContentSecurityPolicyHeaderOptions options)
+        public ContentSecurityPolicyHeaderMiddleware(RequestDelegate next, IOptions<ContentSecurityPolicyHeaderOptions> options)
         {
             _next = next;
-            _value = BuildHeaderValue(options);
+            _value = BuildHeaderValue(options.Value);
         }
 
         /// <summary>

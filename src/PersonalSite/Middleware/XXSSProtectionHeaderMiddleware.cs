@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 
 namespace PersonalSite.Middleware
 {
@@ -22,10 +23,10 @@ namespace PersonalSite.Middleware
         /// </summary>
         /// <param name="next">The next middleware in the request pipeline.</param>
         /// <param name="options">The options to configure this middleware.</param>
-        public XXSSProtectionHeaderMiddleware(RequestDelegate next, XXSSProtectionHeaderOptions options)
+        public XXSSProtectionHeaderMiddleware(RequestDelegate next, IOptions<XXSSProtectionHeaderOptions> options)
         {
             _next = next;
-            _value = BuildHeaderValue(options);
+            _value = BuildHeaderValue(options.Value);
         }
 
         /// <summary>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 
 namespace PersonalSite.Middleware
 {
@@ -21,10 +22,10 @@ namespace PersonalSite.Middleware
         /// </summary>
         /// <param name="next">The next middleware in the request pipeline.</param>
         /// <param name="options">The configuration for this middleware.</param>
-        public ReferrerPolicyHeaderMiddleware(RequestDelegate next, ReferrerPolicyHeaderOptions options)
+        public ReferrerPolicyHeaderMiddleware(RequestDelegate next, IOptions<ReferrerPolicyHeaderOptions> options)
         {
             _next = next;
-            _value = options?.Policy?.Value;
+            _value = options.Value?.Policy?.Value;
         }
 
         /// <summary>

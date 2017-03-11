@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 
 namespace PersonalSite.Middleware
 {
@@ -26,10 +27,10 @@ namespace PersonalSite.Middleware
         /// </summary>
         /// <param name="next">The next middleware in the pipeline.</param>
         /// <param name="options">The configuration for this middleware.</param>
-        public CanonicalDomainMiddleware(RequestDelegate next, CanonicalDomainOptions options)
+        public CanonicalDomainMiddleware(RequestDelegate next, IOptions<CanonicalDomainOptions> options)
         {
             _next = next;
-            _options = options;
+            _options = options.Value;
         }
 
         /// <summary>

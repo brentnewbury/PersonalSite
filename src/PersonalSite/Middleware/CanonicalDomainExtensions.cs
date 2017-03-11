@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Options;
 
 namespace PersonalSite.Middleware
 {
@@ -33,7 +34,7 @@ namespace PersonalSite.Middleware
         /// <returns></returns>
         public static IApplicationBuilder UseCanonicalDomain(this IApplicationBuilder builder, CanonicalDomainOptions options)
         {
-            return builder.UseMiddleware<CanonicalDomainMiddleware>(options);
+            return builder.UseMiddleware<CanonicalDomainMiddleware>(Options.Create(options));
         }
     }
 }

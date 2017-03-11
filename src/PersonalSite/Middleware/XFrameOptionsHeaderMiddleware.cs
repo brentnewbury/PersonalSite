@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 
 namespace PersonalSite.Middleware
 {
@@ -21,10 +22,10 @@ namespace PersonalSite.Middleware
         /// </summary>
         /// <param name="next">The next middleware in the request pipeline.</param>
         /// <param name="options">The options to configure this middleware.</param>
-        public XFrameOptionsHeaderMiddleware(RequestDelegate next, XFrameOptions options)
+        public XFrameOptionsHeaderMiddleware(RequestDelegate next, IOptions<XFrameOptions> options)
         {
             _next = next;
-            _options = options;
+            _options = options.Value;
         }
 
         /// <summary>
