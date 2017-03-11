@@ -44,7 +44,7 @@ namespace PersonalSite.Middleware
             if (headers.ContainsKey(XFrameOptionsHeaderName))
                 return;
 
-            headers[XFrameOptionsHeaderName] = (_options.Option == XFrameOption.Deny) ? "DENY" : "SAMEORIGIN";
+            headers[XFrameOptionsHeaderName] = _options.Option.Value;
         }
     }
 }

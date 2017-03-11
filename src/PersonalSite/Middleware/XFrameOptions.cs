@@ -30,16 +30,27 @@
     /// <summary>
     /// Directives for the <c>X-Frame-Option</c> header.
     /// </summary>
-    public enum XFrameOption
+    public class XFrameOption
     {
         /// <summary>
         /// The page cannot be displayed in a frame.
         /// </summary>
-        Deny,
+        public static XFrameOption Deny = new XFrameOption("DENY");
 
         /// <summary>
         /// The page can only be displayed in a frame from the same origin as the page itself.
         /// </summary>
-        SameOrigin
+        public static XFrameOption SameOrigin = new XFrameOption("SAMEORIGIN");
+
+        internal string Value { get; }
+
+        private XFrameOption()
+        {
+        }
+
+        private XFrameOption(string value)
+        {
+            Value = value;
+        }
     }
 }
