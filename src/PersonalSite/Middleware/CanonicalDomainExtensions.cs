@@ -23,7 +23,7 @@ namespace PersonalSite.Middleware
                 RequireHttps = requireHttps
             };
 
-            return builder.UseMiddleware<CanonicalDomainMiddleware>(options);
+            return builder.UseMiddleware<CanonicalDomainMiddleware>(Options.Create(options));
         }
 
         /// <summary>
