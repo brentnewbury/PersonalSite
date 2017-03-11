@@ -2,6 +2,9 @@
 
 namespace PersonalSite.Middleware
 {
+    /// <summary>
+    /// Extension methods for removing the <c>Server</c> header from the response.
+    /// </summary>
     public static class RemoveServerHeaderExtensions
     {
         /// <summary>

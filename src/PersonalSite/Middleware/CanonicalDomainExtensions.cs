@@ -8,7 +8,7 @@ namespace PersonalSite.Middleware
     public static class CanonicalDomainExtensions
     {
         /// <summary>
-        /// Redirects all requests to the specified <paramref name="domain"/>, optionally redirecting HTTP to HTTPS.
+        /// Redirects all requests not matching the specified <paramref name="domain"/> to the domain, optionally redirecting HTTP to HTTPS.
         /// </summary>
         /// <param name="builder"></param>
         /// <param name="domain">The domain to redirect to if the request is not for the domain specified.</param>
@@ -26,11 +26,10 @@ namespace PersonalSite.Middleware
         }
 
         /// <summary>
-        /// Redirects all requests to the specified <paramref name="domain"/>, optionally redirecting HTTP to HTTPS.
+        /// Redirects all requests when not matching the domain in the specified <paramref name="options"/>, optionally redirecting HTTP to HTTPS.
         /// </summary>
         /// <param name="builder"></param>
-        /// <param name="domain">The domain to redirect to if the request is not for the domain specified.</param>
-        /// <param name="requireHttps">Redirect any request made over HTTP to HTTPS.</param>
+        /// <param name="options">The options for the canonical domain.</param>
         /// <returns></returns>
         public static IApplicationBuilder UseCanonicalDomain(this IApplicationBuilder builder, CanonicalDomainOptions options)
         {

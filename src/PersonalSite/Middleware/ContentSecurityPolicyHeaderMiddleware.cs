@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace PersonalSite.Middleware
 {
+    /// <summary>
+    /// Emits the <c>Content-Security-Policy</c> header as part of the response, if the request is made over HTTPS.
+    /// </summary>
     public class ContentSecurityPolicyHeaderMiddleware
     {
         private const string ContentSecurityPolicyHeaderName = "Content-Security-Policy";
@@ -12,12 +15,22 @@ namespace PersonalSite.Middleware
         private readonly RequestDelegate _next;
         private readonly string _value;
 
+        /// <summary>
+        /// Initialises a new <see cref="ContentSecurityPolicyHeaderMiddleware"/> instance.
+        /// </summary>
+        /// <param name="next">The next middleware in the request pipeline.</param>
+        /// <param name="options">The configuration for this middleware.</param>
         public ContentSecurityPolicyHeaderMiddleware(RequestDelegate next, ContentSecurityPolicyHeaderOptions options)
         {
             _next = next;
             _value = BuildHeaderValue(options);
         }
 
+        /// <summary>
+        /// Processes the request and emits the <c>Content-Security-Polcy</c> header, if the request is made over HTTPS.
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public async Task Invoke(HttpContext context)
         {
             if (context.Request.IsHttps)

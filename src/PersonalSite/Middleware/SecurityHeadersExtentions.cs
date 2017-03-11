@@ -3,6 +3,9 @@ using System;
 
 namespace PersonalSite.Middleware
 {
+    /// <summary>
+    /// Extension methods to add various security related headers to the response.
+    /// </summary>
     public static class SecurityHeadersExtentions
     {
         /// <summary>

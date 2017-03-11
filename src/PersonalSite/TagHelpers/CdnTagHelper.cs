@@ -72,6 +72,11 @@ namespace PersonalSite.TagHelpers
             _cache = cache;
         }
 
+        /// <summary>
+        /// Processes the tag helper.
+        /// </summary>
+        /// <param name="context">The <see cref="TagHelperContext"/> instance.</param>
+        /// <param name="output">The <see cref="TagHelperOutput"/> instance.</param>
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             // Don't load from CDN in development

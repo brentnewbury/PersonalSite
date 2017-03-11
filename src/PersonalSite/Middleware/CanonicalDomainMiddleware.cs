@@ -8,7 +8,7 @@ namespace PersonalSite.Middleware
     /// Middleware component that redirects requests to specified domain, optionally requiring HTTPS.
     /// </summary>
     /// <remarks>
-    /// We use this middleware rather than using <c>[RequireHtps]</c> as we don't want to potentially
+    /// We use this middleware rather than using <c>[RequireHttps]</c> as we don't want to potentially
     /// have two successive 301 redirects should the incoming request be on a non-canonical domain and
     /// not over HTTPS when required.
     /// </remarks>
@@ -21,12 +21,22 @@ namespace PersonalSite.Middleware
         private readonly RequestDelegate _next;
         private readonly CanonicalDomainOptions _options;
 
+        /// <summary>
+        /// Initialises a new <see cref="CanonicalDomainMiddleware"/> instance.
+        /// </summary>
+        /// <param name="next">The next middleware in the pipeline.</param>
+        /// <param name="options">The configuration for this middleware.</param>
         public CanonicalDomainMiddleware(RequestDelegate next, CanonicalDomainOptions options)
         {
             _next = next;
             _options = options;
         }
 
+        /// <summary>
+        /// Processes the request and redirects the request if required..
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public async Task Invoke(HttpContext context)
         {
             var request = context.Request;

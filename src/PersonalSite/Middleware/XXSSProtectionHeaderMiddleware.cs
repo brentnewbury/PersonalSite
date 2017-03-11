@@ -4,19 +4,35 @@ using System.Threading.Tasks;
 
 namespace PersonalSite.Middleware
 {
+    /// <summary>
+    /// Emits the <c>X-XSS-Protection</c> header as part of the response.
+    /// </summary>
     public class XXSSProtectionHeaderMiddleware
     {
+        /// <summary>
+        /// The name of the <c>X-XSS-Protection</c> header.
+        /// </summary>
         public const string XXSSProtectionHeaderName = "X-XSS-Protection";
 
         private readonly RequestDelegate _next;
         private readonly string _value;
 
+        /// <summary>
+        /// Initialises a new <see cref="XXSSProtectionHeaderMiddleware"/> instance.
+        /// </summary>
+        /// <param name="next">The next middleware in the request pipeline.</param>
+        /// <param name="options">The options to configure this middleware.</param>
         public XXSSProtectionHeaderMiddleware(RequestDelegate next, XXSSProtectionHeaderOptions options)
         {
             _next = next;
             _value = BuildHeaderValue(options);
         }
 
+        /// <summary>
+        /// Processes the request and emits the <c>X-XSS-Protection</c> header.
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public async Task Invoke(HttpContext context)
         {
             AddXXSSProtectionHeader(context.Response.Headers);
