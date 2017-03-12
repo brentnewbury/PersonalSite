@@ -55,8 +55,6 @@ namespace PersonalSite
                 app.UseExceptionHandler("/Error");
             }
 
-            app.UseRemoveServerHeader();
-
             app.UseStaticFiles(new StaticFileOptions()
             {
                 OnPrepareResponse = context =>
