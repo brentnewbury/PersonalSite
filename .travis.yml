@@ -1,10 +1,6 @@
 language: csharp
-sudo: required
+sudo: false
 dist: trusty
-addons:
-  apt:
-    packages:
-      - libunwind8
 env:
   global:
     - DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
