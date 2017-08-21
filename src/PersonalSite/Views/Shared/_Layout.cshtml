@@ -1,5 +1,4 @@
-﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet ApplicationInsightsJavascript
-@inject Microsoft.AspNetCore.Hosting.IHostingEnvironment HostingEnvironment
+﻿@inject Microsoft.AspNetCore.Hosting.IHostingEnvironment HostingEnvironment
 @inject Microsoft.Extensions.PlatformAbstractions.ApplicationEnvironment ApplicationEnvironment
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +38,6 @@
     <link rel="me" type="text/html" href="http://uk.linkedin.com/in/brentnewbury/" />
     <title>@ViewData["Title"]</title>
     <environment names="Production">
-    @Html.Raw(ApplicationInsightsJavascript.FullScript)
     </environment>
 </head>
 <body>
