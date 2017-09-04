@@ -1,4 +1,5 @@
-﻿@{
+﻿@page
+@{
     ViewData["Title"] = "Brent Newbury - 404";
 }
             <h2>Oops, that page doesn't exist.</h2>
@@ -6,7 +7,7 @@
             <p>I couldn't find the page you were looking for. Maybe it was moved or typed incorrectly? Don't worry, an angry <a href="http://www.youtube.com/watch?v=4r7wHMg5Yjg" target="_blank" title="Honey badger don't care">honey badger</a> has been dispatched to find whoever is responsible.</p>
             <p>All we can do now is hope the honey badger succeeds in his mission. Or you can try one of the following locations:</p>
             <ul id="ErrorLocations">
-                <li><a asp-controller="Home" asp-action="Index" class="Blue">Home</a></li>
-                <li><a asp-controller="Home" asp-action="About" class="Green">About</a></li>
-                <li><a asp-controller="Home" asp-action="Contact" class="Orange">Contact</a></li>
+                <li><a asp-page="/Index" class="Blue">Home</a></li>
+                <li><a asp-page="/About" class="Green">About</a></li>
+                <li><a asp-page="/Conact" class="Orange">Contact</a></li>
             </ul>
