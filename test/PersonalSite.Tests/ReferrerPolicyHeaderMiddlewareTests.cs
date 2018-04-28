@@ -25,14 +25,18 @@ namespace PersonalSite.Tests
 
         [Theory]
         [MemberData(nameof(Policies))]
-        public async Task EmitReferrerPolicyOptionValue(ReferrerPolicy policy, string value)
+        public async Task ReferrerPolicyHeaderMiddleware_EmitsReferrerPolicyOptionValue(ReferrerPolicy policy, string value)
         {
+            // Arrane
             var server = PersonalSiteTestServer.Create(app =>
             {
                 app.UseReferrerPolicyHeader(policy);
             });
+
+            // Act
             var response = await server.CreateRequest("http://server/").GetAsync();
 
+            // Assert
             Assert.True(response.Headers.Contains(ReferrerPolicyHeaderMiddleware.ReferrerPolicyHeaderName));
             Assert.Equal(value, response.Headers.GetValues(ReferrerPolicyHeaderMiddleware.ReferrerPolicyHeaderName).First());
         }
