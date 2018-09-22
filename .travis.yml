@@ -14,4 +14,8 @@ addons:
   apt:
     packages:
       - libunwind8
-dotnet: 2.1.301
+dotnet: 2.1.4
+branches:
+  only:
+  - master
+solution: PersonalSite.sln
