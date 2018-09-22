@@ -6,3 +6,6 @@ build:
   parallel: true
   verbosity: minimal
 test: off
+branches:
+  only:
+  - dev
