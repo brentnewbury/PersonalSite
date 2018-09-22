@@ -1,4 +1,5 @@
 language: csharp
+solution: PersonalSite.sln
 sudo: required
 dist: trusty
 env:
@@ -9,13 +10,8 @@ mono: none
 os:
   - linux
   - osx
-osx_image: xcode8.2
-addons:
-  apt:
-    packages:
-      - libunwind8
+osx_image: xcode8.3
 dotnet: 2.1.4
 branches:
   only:
   - master
-solution: PersonalSite.sln
