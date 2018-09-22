@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
-using System;
+﻿using System;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Options;
 
 namespace PersonalSite.Middleware

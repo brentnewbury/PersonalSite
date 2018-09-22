@@ -1,8 +1,8 @@
-﻿using PersonalSite.Middleware;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using PersonalSite.Middleware;
 using Xunit;
-using System;
 
 namespace PersonalSite.Tests
 {
@@ -16,9 +16,10 @@ namespace PersonalSite.Tests
             {
                 app.UseXFrameOptionsHeader(XFrameOption.Deny);
             });
+            var client = server.CreateClient();
 
             // Act
-            var response = await server.CreateRequest("http://server/").GetAsync();
+            var response = await client.GetAsync("http://server/");
 
             // Assert
             Assert.True(response.Headers.Contains(XFrameOptionsHeaderMiddleware.XFrameOptionsHeaderName));
@@ -33,9 +34,10 @@ namespace PersonalSite.Tests
             {
                 app.UseXFrameOptionsHeader(XFrameOption.SameOrigin);
             });
+            var client = server.CreateClient();
 
             // Act
-            var response = await server.CreateRequest("http://server/").GetAsync();
+            var response = await client.GetAsync("http://server/");
 
             // Assert
             Assert.True(response.Headers.Contains(XFrameOptionsHeaderMiddleware.XFrameOptionsHeaderName));
@@ -50,9 +52,10 @@ namespace PersonalSite.Tests
             {
                 app.UseXFrameOptionsHeader(XFrameOption.CreateAllowFrom(new Uri("http://localhost/")));
             });
+            var client = server.CreateClient();
 
             // Act
-            var response = await server.CreateRequest("http://server/").GetAsync();
+            var response = await client.GetAsync("http://server/");
 
             // Assert
             Assert.True(response.Headers.Contains(XFrameOptionsHeaderMiddleware.XFrameOptionsHeaderName));
