@@ -1,7 +1,7 @@
-﻿using PersonalSite.Middleware;
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using PersonalSite.Middleware;
 using Xunit;
 
 namespace PersonalSite.Tests
@@ -17,9 +17,10 @@ namespace PersonalSite.Tests
             {
                 app.UseStrictTransportSecurityHeader(maxAge);
             });
+            var client = server.CreateClient();
 
             // Act
-            var response = await server.CreateRequest("http://server/").GetAsync();
+            var response = await client.GetAsync("http://server/");
 
             // Assert
             Assert.False(response.Headers.Contains(StrictTransportSecurityHeaderMiddleware.StrictTransportSecurityHeaderName));
@@ -34,9 +35,10 @@ namespace PersonalSite.Tests
             {
                 app.UseStrictTransportSecurityHeader(maxAge);
             });
+            var client = server.CreateClient();
 
             // Act
-            var response = await server.CreateRequest("https://server/").GetAsync();
+            var response = await client.GetAsync("https://server/");
 
             // Assert
             Assert.True(response.Headers.Contains(StrictTransportSecurityHeaderMiddleware.StrictTransportSecurityHeaderName));
@@ -52,9 +54,10 @@ namespace PersonalSite.Tests
             {
                 app.UseStrictTransportSecurityHeader(maxAge, includeSubDomains: true);
             });
+            var client = server.CreateClient();
 
             // Act
-            var response = await server.CreateRequest("https://server/").GetAsync();
+            var response = await client.GetAsync("https://server/");
 
             // Assert
             Assert.True(response.Headers.Contains(StrictTransportSecurityHeaderMiddleware.StrictTransportSecurityHeaderName));
@@ -70,9 +73,10 @@ namespace PersonalSite.Tests
             {
                 app.UseStrictTransportSecurityHeader(maxAge, preload: true);
             });
+            var client = server.CreateClient();
 
             // Act
-            var response = await server.CreateRequest("https://server/").GetAsync();
+            var response = await client.GetAsync("https://server/");
 
             // Assert
             Assert.True(response.Headers.Contains(StrictTransportSecurityHeaderMiddleware.StrictTransportSecurityHeaderName));

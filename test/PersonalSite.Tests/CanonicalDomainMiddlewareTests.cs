@@ -1,6 +1,6 @@
-﻿using PersonalSite.Middleware;
-using System.Net;
+﻿using System.Net;
 using System.Threading.Tasks;
+using PersonalSite.Middleware;
 using Xunit;
 
 namespace PersonalSite.Tests
@@ -15,9 +15,10 @@ namespace PersonalSite.Tests
             {
                 app.UseCanonicalDomain(requireHttps: true);
             });
+            var client = server.CreateClient();
 
             // Act
-            var response = await server.CreateRequest("http://server/").GetAsync();
+            var response = await client.GetAsync("http://server/");
 
             // Assert
             Assert.Equal(HttpStatusCode.MovedPermanently, response.StatusCode);
@@ -33,9 +34,10 @@ namespace PersonalSite.Tests
             {
                 app.UseCanonicalDomain(domain: canonicalDomain);
             });
+            var client = server.CreateClient();
 
             // Act
-            var response = await server.CreateRequest("http://server/").GetAsync();
+            var response = await client.GetAsync("http://server/");
 
             // Assert
             Assert.Equal(HttpStatusCode.MovedPermanently, response.StatusCode);
@@ -52,9 +54,10 @@ namespace PersonalSite.Tests
             {
                 app.UseCanonicalDomain(domain: canonicalDomain);
             });
+            var client = server.CreateClient();
 
             // Act
-            var response = await server.CreateRequest($"http://wrong.com/{pathAndQuery}").GetAsync();
+            var response = await client.GetAsync($"http://wrong.com/{pathAndQuery}");
 
             // Assert
             Assert.Equal(HttpStatusCode.MovedPermanently, response.StatusCode);

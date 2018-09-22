@@ -1,6 +1,6 @@
-﻿using PersonalSite.Middleware;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
+using PersonalSite.Middleware;
 using Xunit;
 
 namespace PersonalSite.Tests
@@ -15,9 +15,10 @@ namespace PersonalSite.Tests
             {
                 app.UseXContentTypeOptionsHeader();
             });
+            var client = server.CreateClient();
 
             // Act
-            var response = await server.CreateRequest("http://server/").GetAsync();
+            var response = await client.GetAsync("http://server/");
 
             // Assert
             Assert.True(response.Headers.Contains(XContentTypeOptionsHeaderMiddleware.XContentTypeOptionsHeaderName));

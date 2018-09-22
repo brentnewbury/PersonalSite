@@ -1,7 +1,7 @@
-﻿using PersonalSite.Middleware;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using PersonalSite.Middleware;
 using Xunit;
 
 namespace PersonalSite.Tests
@@ -32,9 +32,10 @@ namespace PersonalSite.Tests
             {
                 app.UseReferrerPolicyHeader(policy);
             });
+            var client = server.CreateClient();
 
             // Act
-            var response = await server.CreateRequest("http://server/").GetAsync();
+            var response = await client.GetAsync("http://server/");
 
             // Assert
             Assert.True(response.Headers.Contains(ReferrerPolicyHeaderMiddleware.ReferrerPolicyHeaderName));
