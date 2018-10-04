@@ -13,7 +13,7 @@ jobs:
     vmImage: 'Ubuntu-16.04'
   steps:
   - script: dotnet build --configuration $(buildConfiguration)
-    displayName:Build
+    displayName: Build
   - script: dotnet test test/PersonalSite.Tests/PersonalSite.Tests.csproj --no-build
     displayName: Test
 - job: Windows
@@ -21,7 +21,7 @@ jobs:
     vmImage: 'VS2017-Win2016'
   steps:
   - script: dotnet build --configuration $(buildConfiguration)
-    displayName:Build
+    displayName: Build
   - script: dotnet test test/PersonalSite.Tests/PersonalSite.Tests.csproj --no-build
     displayName: Test
 - job: macOS
@@ -29,6 +29,6 @@ jobs:
     vmImage: 'macOS-10.13'
   steps:
   - script: dotnet build --configuration $(buildConfiguration)
-    displayName:Build
+    displayName: Build
   - script: dotnet test test/PersonalSite.Tests/PersonalSite.Tests.csproj --no-build
     displayName: Test
