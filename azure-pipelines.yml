@@ -7,40 +7,24 @@
 variables:
   buildConfiguration: 'Release'
 
-jobs: 
-- job: Linux
-  pool:
-    vmImage: 'Ubuntu-16.04'
-  steps:
-  - script: dotnet build --configuration $(buildConfiguration)
-    displayName: Build
-  - script: dotnet test test/PersonalSite.Tests/PersonalSite.Tests.csproj --configuration $(buildConfiguration) --logger trx
-    displayName: Test
-  - task: PublishTestResults@2
-    inputs:
-      testRunner: VSTest
-      testResultsFiles: '**/*.trx'
-- job: Windows
-  pool:
-    vmImage: 'VS2017-Win2016'
-  steps:
-  - script: dotnet build --configuration $(buildConfiguration)
-    displayName: Build
-  - script: dotnet test test/PersonalSite.Tests/PersonalSite.Tests.csproj --configuration $(buildConfiguration) --logger trx
-    displayName: Test
-  - task: PublishTestResults@2
-    inputs:
-      testRunner: VSTest
-      testResultsFiles: '**/*.trx'
-- job: macOS
-  pool:
-    vmImage: 'macOS-10.13'
-  steps:
-  - script: dotnet build --configuration $(buildConfiguration)
-    displayName: Build
-  - script: dotnet test test/PersonalSite.Tests/PersonalSite.Tests.csproj --configuration $(buildConfiguration) --logger trx
-    displayName: Test
-  - task: PublishTestResults@2
-    inputs:
-      testRunner: VSTest
-      testResultsFiles: '**/*.trx'
+jobs:
+- template: azure-pipelines.build.yml  # Template reference
+  parameters:
+    name: Windows
+    pool:
+      vmImage: 'vs2017-win2016'
+    configuration: $(buildConfiguration)
+
+- template: azure-pipelines.build.yml  # Template reference
+  parameters:
+    name: Linux
+    pool:
+      vmImage: 'Ubuntu-16.04'
+    configuration: $(buildConfiguration)
+
+- template: azure-pipelines.build.yml  # Template reference
+  parameters:
+    name: macOS
+    pool:
+      vmImage: 'macOS-10.13'
+    configuration: $(buildConfiguration)
