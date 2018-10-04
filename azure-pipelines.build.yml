@@ -19,9 +19,9 @@ jobs:
         configuration: release
             
   steps:
-  - script: dotnet build --configuration {{buildConfiguration}}
+  - script: dotnet build --configuration {{configuration}}
     displayName: Build
-  - script: dotnet test test/PersonalSite.Tests/PersonalSite.Tests.csproj --configuration {{buildConfiguration}} --logger trx
+  - script: dotnet test test/PersonalSite.Tests/PersonalSite.Tests.csproj --configuration {{configuration}} --logger trx
     displayName: Test
   - task: PublishTestResults@2
     inputs:
