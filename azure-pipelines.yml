@@ -14,21 +14,33 @@ jobs:
   steps:
   - script: dotnet build --configuration $(buildConfiguration)
     displayName: Build
-  - script: dotnet test test/PersonalSite.Tests/PersonalSite.Tests.csproj --configuration $(buildConfiguration)
+  - script: dotnet test test/PersonalSite.Tests/PersonalSite.Tests.csproj --configuration $(buildConfiguration) --logger trx
     displayName: Test
+  - task: PublishTestResults@2
+    inputs:
+      testRunner: VSTest
+      testResultsFiles: '**/*.trx'
 - job: Windows
   pool:
     vmImage: 'VS2017-Win2016'
   steps:
   - script: dotnet build --configuration $(buildConfiguration)
     displayName: Build
-  - script: dotnet test test/PersonalSite.Tests/PersonalSite.Tests.csproj --configuration $(buildConfiguration)
+  - script: dotnet test test/PersonalSite.Tests/PersonalSite.Tests.csproj --configuration $(buildConfiguration) --logger trx
     displayName: Test
+  - task: PublishTestResults@2
+    inputs:
+      testRunner: VSTest
+      testResultsFiles: '**/*.trx'
 - job: macOS
   pool:
     vmImage: 'macOS-10.13'
   steps:
   - script: dotnet build --configuration $(buildConfiguration)
     displayName: Build
-  - script: dotnet test test/PersonalSite.Tests/PersonalSite.Tests.csproj --configuration $(buildConfiguration)
+  - script: dotnet test test/PersonalSite.Tests/PersonalSite.Tests.csproj --configuration $(buildConfiguration) --logger trx
     displayName: Test
+  - task: PublishTestResults@2
+    inputs:
+      testRunner: VSTest
+      testResultsFiles: '**/*.trx'
