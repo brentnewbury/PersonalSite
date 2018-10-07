@@ -1,0 +1,29 @@
+# ASP.NET Core
+# Build and test ASP.NET Core projects targeting .NET Core.
+# Add steps that run tests, create a NuGet package, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+
+parameters:
+  name: ''
+  pool: ''
+
+jobs:
+- job: ${{ parameters.name }}
+  pool: ${{ parameters.pool }}
+  strategy:
+    matrix:
+      Debug:
+        configuration: debug
+      Release:
+        configuration: release
+            
+  steps:
+  - script: dotnet build --configuration $(configuration)
+    displayName: Build
+  - script: dotnet test test/PersonalSite.Tests/PersonalSite.Tests.csproj --configuration $(configuration) --logger trx --collect "Code coverage"
+    displayName: Test
+  - task: PublishTestResults@2
+    inputs:
+      testRunner: VSTest
+      testResultsFiles: '**/*.trx'

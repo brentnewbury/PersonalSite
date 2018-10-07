@@ -1,0 +1,24 @@
+# ASP.NET Core
+# Build and test ASP.NET Core projects targeting .NET Core.
+# Add steps that run tests, create a NuGet package, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+
+jobs:
+- template: azure-pipelines.build.yml  # Template reference
+  parameters:
+    name: Windows
+    pool:
+      vmImage: 'vs2017-win2016'
+
+- template: azure-pipelines.build.yml  # Template reference
+  parameters:
+    name: Linux
+    pool:
+      vmImage: 'Ubuntu-16.04'
+
+- template: azure-pipelines.build.yml  # Template reference
+  parameters:
+    name: macOS
+    pool:
+      vmImage: 'macOS-10.13'
