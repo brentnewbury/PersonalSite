@@ -4,27 +4,21 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 
-variables:
-  buildConfiguration: 'Release'
-
 jobs:
 - template: azure-pipelines.build.yml  # Template reference
   parameters:
     name: Windows
     pool:
       vmImage: 'vs2017-win2016'
-    configuration: $(buildConfiguration)
 
 - template: azure-pipelines.build.yml  # Template reference
   parameters:
     name: Linux
     pool:
       vmImage: 'Ubuntu-16.04'
-    configuration: $(buildConfiguration)
 
 - template: azure-pipelines.build.yml  # Template reference
   parameters:
     name: macOS
     pool:
       vmImage: 'macOS-10.13'
-    configuration: $(buildConfiguration)
