@@ -42,17 +42,7 @@ namespace PersonalSite
                 app.UseExceptionHandler("/Error");
             }
 
-            app.UseStaticFiles(new StaticFileOptions()
-            {
-                OnPrepareResponse = context =>
-                {
-                    context.Context.Response.GetTypedHeaders().CacheControl = new CacheControlHeaderValue()
-                    {
-                        MaxAge = TimeSpan.FromDays(14),
-                        Public = true
-                    };
-                }
-            });
+            app.UseStaticFiles();
 
             if (env.IsProduction() || env.IsStaging())
             {
@@ -94,22 +84,19 @@ namespace PersonalSite
                 ImageSources =
                 {
                     ContentSecurityPolicyHeaderOptions.Self,
-                    ContentSecurityPolicyHeaderOptions.Data,
-                    "https://cdn.brentnewbury.com/"
+                    ContentSecurityPolicyHeaderOptions.Data
                 },
                 ScriptSources =
                 {
                     ContentSecurityPolicyHeaderOptions.Self,
                     ContentSecurityPolicyHeaderOptions.UnsafeInline,
                     ContentSecurityPolicyHeaderOptions.UnsafeEval,
-                    "https://cdn.brentnewbury.com/",
                     "https://az416426.vo.msecnd.net/",
                     "https://fonts.googleapis.com/"
                 },
                 StyleSources =
                 {
                     ContentSecurityPolicyHeaderOptions.Self,
-                    "https://cdn.brentnewbury.com/",
                     "https://fonts.googleapis.com/"
                 },
                 FontSources =
