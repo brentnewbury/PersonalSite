@@ -6,8 +6,10 @@ using Microsoft.AspNetCore.Mvc.Razor.TagHelpers;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc.TagHelpers.Internal;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace PersonalSite.TagHelpers
 {
@@ -41,7 +43,7 @@ namespace PersonalSite.TagHelpers
 
         private readonly IHostingEnvironment _env;
         private readonly IMemoryCache _cache;
-        private FileVersionProvider _fileVersionProvider;
+        private IFileVersionProvider _fileVersionProvider;
 
         /// <summary>
         /// The URI to a CDN location that will deliver the resource.
@@ -107,15 +109,14 @@ namespace PersonalSite.TagHelpers
                 path = path.Substring(index);
 
             // Don't change path if it's absolute
-            Uri uri;
-            if (Uri.TryCreate(path, UriKind.Absolute, out uri))
+            if (Uri.TryCreate(path, UriKind.Absolute, out var uri))
                 return;
 
             if (AppendVersion)
             {
                 EnsureFileVersionProvider();
 
-                path = _fileVersionProvider.AddFileVersionToPath(path);
+                path = _fileVersionProvider.AddFileVersionToPath(ViewContext.HttpContext.Request.PathBase, path);
             }
 
             if (path.StartsWith("~/"))
@@ -134,11 +135,7 @@ namespace PersonalSite.TagHelpers
             if (_fileVersionProvider != null)
                 return;
 
-            _fileVersionProvider = new FileVersionProvider(
-                _env.WebRootFileProvider,
-                _cache,
-                ViewContext.HttpContext.Request.PathBase
-                );
+            _fileVersionProvider = ViewContext.HttpContext.RequestServices.GetRequiredService<IFileVersionProvider>();
         }
     }
 }
