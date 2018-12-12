@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <ApplicationInsightsResourceId>/subscriptions/d66ff7b5-e443-4fa5-aefa-c9e7e39ded12/resourcegroups/default-web-northeurope/providers/microsoft.insights/components/brentnewbury</ApplicationInsightsResourceId>
