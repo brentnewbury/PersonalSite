@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <ApplicationInsightsResourceId>/subscriptions/d66ff7b5-e443-4fa5-aefa-c9e7e39ded12/resourcegroups/default-web-northeurope/providers/microsoft.insights/components/brentnewbury</ApplicationInsightsResourceId>

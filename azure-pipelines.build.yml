@@ -17,15 +17,18 @@ jobs:
         configuration: debug
       Release:
         configuration: release
-            
+
   steps:
   - task: DotNetCoreInstaller@0
     inputs:
-      version: '3.0.100'
+      version: '5.0.100'
+
   - script: dotnet build --configuration $(configuration)
     displayName: Build
+
   - script: dotnet test test/PersonalSite.Tests/PersonalSite.Tests.csproj --configuration $(configuration) --logger trx --collect "Code coverage"
     displayName: Test
+
   - task: PublishTestResults@2
     inputs:
       testRunner: VSTest
