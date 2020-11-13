@@ -7,20 +7,20 @@ trigger:
 - master
 
 jobs:
-- template: azure-pipelines.build.yml  # Template reference
+- template: azure-pipelines.build.yml
   parameters:
     name: Windows
     pool:
       vmImage: 'vs2017-win2016'
 
-- template: azure-pipelines.build.yml  # Template reference
+- template: azure-pipelines.build.yml
   parameters:
     name: Linux
     pool:
-      vmImage: 'Ubuntu-16.04'
+      vmImage: 'ubuntu-latest'
 
-- template: azure-pipelines.build.yml  # Template reference
+- template: azure-pipelines.build.yml
   parameters:
     name: macOS
     pool:
-      vmImage: 'macOS-10.13'
+      vmImage: 'windows-latest'
