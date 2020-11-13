@@ -11,7 +11,7 @@ jobs:
   parameters:
     name: Windows
     pool:
-      vmImage: 'vs2017-win2016'
+      vmImage: 'windows-latest'
 
 - template: azure-pipelines.build.yml
   parameters:
